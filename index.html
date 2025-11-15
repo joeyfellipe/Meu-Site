@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joey Fellipe | Analista de E-commerce & Criador Digital</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Configuração de Cores da Marca -->
+    <style>
+        :root {
+            --brand-pink: #ED0747;
+            /* Cor primária da marca (Rosa) */
+            --brand-blue: #206AED;
+            /* Cor secundária (não usada ativamente) */
+            --brand-card: #0A0A0A;
+            /* Cor de fundo dos cards */
+        }
+
+        /* Aplica a fonte Inter e o fundo escuro */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #E0E0E0;
+        }
+
+        /* Classes de cor personalizadas do Tailwind */
+        .text-brand-pink {
+            color: var(--brand-pink);
+        }
+
+        .bg-brand-pink {
+            background-color: var(--brand-pink);
+        }
+
+        .border-brand-pink {
+            border-color: var(--brand-pink);
+        }
+
+        .bg-card {
+            background-color: var(--brand-card);
+        }
+
+        /* Efeito de hover para botões de contorno */
+        .btn-outline {
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--brand-pink);
+            color: white;
+        }
+
+        /* Efeito de hover para botões sólidos */
+        .btn-solid {
+            transition: all 0.3s ease;
+        }
+
+        .btn-solid:hover {
+            filter: brightness(1.2);
+        }
+    </style>
+</head>
+
+<body class="w-full max-w-7xl mx-auto p-4 md:p-8">
+
+    <!-- CABEÇALHO -->
+    <header class="fixed top-0 left-0 right-0 z-50 p-4 backdrop-blur-lg bg-black/80">
+        <div class="w-full max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo/Nome -->
+            <a href="#" class="text-xl md:text-2xl font-bold text-stone-100">Joey Fellipe</a>
+
+            <!-- Menu Desktop -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="#sobre" class="text-gray-300 hover:text-brand-pink transition-colors">Sobre</a>
+                <a href="#competencias" class="text-gray-300 hover:text-brand-pink transition-colors">Competências</a>
+                <a href="#idiomas" class="text-gray-300 hover:text-brand-pink transition-colors">Idiomas</a>
+                <a href="#case-de-sucesso" class="text-gray-300 hover:text-brand-pink transition-colors">Case</a>
+                <a href="#experiencia" class="text-gray-300 hover:text-brand-pink transition-colors">Experiência</a>
+                <a href="#formacao" class="text-gray-300 hover:text-brand-pink transition-colors">Formação</a>
+                <a href="#contato" class="text-gray-300 hover:text-brand-pink transition-colors">Contato</a>
+            </nav>
+
+            <!-- Botão Menu Mobile -->
+            <button id="mobile-menu-button" class="md:hidden text-stone-100">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Menu Mobile (Oculto) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-card rounded-2xl mt-4 p-4">
+            <nav class="flex flex-col space-y-4 text-center">
+                <a href="#sobre" class="text-gray-300 hover:text-brand-pink transition-colors">Sobre</a>
+                <a href="#competencias" class="text-gray-300 hover:text-brand-pink transition-colors">Competências</a>
+                <a href="#idiomas" class="text-gray-300 hover:text-brand-pink transition-colors">Idiomas</a>
+                <a href="#case-de-sucesso" class="text-gray-300 hover:text-brand-pink transition-colors">Case</a>
+                <a href="#experiencia" class="text-gray-300 hover:text-brand-pink transition-colors">Experiência</a>
+                <a href="#formacao" class="text-gray-300 hover:text-brand-pink transition-colors">Formação</a>
+                <a href="#contato" class="text-gray-300 hover:text-brand-pink transition-colors">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="mt-24">
+
+        <!-- SEÇÃO HERO -->
+        <section id="hero" class="flex flex-col md:flex-row items-center justify-between gap-8 min-h-[60vh]">
+            <!-- Coluna de Texto -->
+            <div class="flex-1 text-center md:text-left">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-stone-100 leading-tight">
+                    Joey Fellipe Kartowidjojo
+                </h1>
+                <h2 class="text-2xl sm:text-3xl font-bold text-brand-pink mt-4">
+                    Analista de E-commerce & Criador Digital.
+                </h2>
+                <p class="text-lg text-gray-300 mt-6 max-w-xl mx-auto md:mx-0">
+                    Unindo Análise de Dados e Design para impulsionar resultados e criar conexões reais.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 mt-10 justify-center md:justify-start">
+                    <a href="https://www.linkedin.com/in/joeyfellipe" target="_blank" rel="noopener noreferrer"
+                        class="btn-solid bg-brand-pink text-white font-bold py-4 px-8 rounded-full text-lg w-full sm:w-auto">
+                        Acessar LinkedIn
+                    </a>
+                    <a href="#case-de-sucesso"
+                        class="btn-outline border-2 border-brand-pink text-brand-pink font-bold py-4 px-8 rounded-full text-lg w-full sm:w-auto">
+                        Ver Case de Sucesso
+                    </a>
+                </div>
+            </div>
+            <!-- Coluna da Imagem -->
+            <div class="flex-1 mt-8 md:mt-0 flex justify-center">
+                <img src="https://media.licdn.com/dms/image/v2/D4E03AQGIITjDzvF-Jg/profile-displayphoto-scale_400_400/B4EZqEuJFLIoAg-/0/1763163282221?e=1764806400&v=beta&t=W7Rgu01YzePJ4m9b5mMbnF4TgmL7dMe_D4EoreuKfgA"
+                    alt="Foto de perfil de Joey Fellipe"
+                    class="rounded-full w-64 h-64 md:w-96 md:h-96 object-cover border-4 border-brand-pink shadow-lg">
+            </div>
+        </section>
+
+        <!-- SEÇÃO SOBRE (Resumo Profissional) -->
+        <section id="sobre" class="mt-24 md:mt-32">
+            <div class="bg-card rounded-2xl p-8 md:p-12">
+                <h2 class="text-4xl font-bold text-center text-brand-pink mb-8">Sobre Mim</h2>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto text-center leading-relaxed">
+                    Analista de E-commerce com experiência em gestão e desenvolvimento de operações comerciais em
+                    marketplaces. Foco em análise de desempenho (vendas, margem, giro de estoque) e implementação de
+                    estratégias para aumento de conversão.
+                    <br><br>
+                    Possuo experiência consolidada como Criador Digital e Designer Gráfico, utilizando o marketing de
+                    conteúdo, design e gestão de mídias sociais para impulsionar a visibilidade e o engajamento.
+                    Atualmente cursando Tecnologia em Análise e Desenvolvimento de Sistemas, unindo visão de negócios
+                    orientada a dados com capacidade técnica e criativa.
+                </p>
+            </div>
+        </section>
+
+        <!-- SEÇÃO COMPETÊNCIAS -->
+        <section id="competencias" class="mt-24 md:mt-32">
+            <div class="bg-card rounded-2xl p-8 md:p-12">
+                <h2 class="text-4xl font-bold text-center text-brand-pink mb-12">Competências</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+                    <!-- Coluna Análise -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-stone-100 mb-4">Análise & Estratégia de E-commerce</h3>
+                        <ul class="list-disc list-outside space-y-2 pl-5 text-gray-300">
+                            <li>Gestão de Marketplaces (Mercado Livre, Shopee, Magalu)</li>
+                            <li>Análise de Indicadores Comerciais (Vendas, Margem, ROI, Giro)</li>
+                            <li>Análise de Concorrência e Inteligência de Mercado</li>
+                            <li>Estratégias de SEO para Marketplaces</li>
+                            <li>Otimização de Conversão (CRO)</li>
+                        </ul>
+                    </div>
+                    <!-- Coluna Design -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-stone-100 mb-4">Design & Marketing Digital</h3>
+                        <ul class="list-disc list-outside space-y-2 pl-5 text-gray-300">
+                            <li>Design Gráfico (Photoshop & CorelDraw)</li>
+                            <li>Criação e Edição de Vídeo</li>
+                            <li>Marketing de Conteúdo e Social Media</li>
+                            <li>Construção de Identidade Visual</li>
+                            <li>Comunicação e Atendimento ao Público</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO IDIOMAS -->
+        <section id="idiomas" class="mt-24 md:mt-32">
+            <div class="bg-card rounded-2xl p-8 md:p-12">
+                <h2 class="text-4xl font-bold text-center text-brand-pink mb-12">Idiomas</h2>
+                <div class="space-y-8 max-w-2xl mx-auto">
+
+                    <!-- Português -->
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-lg font-bold text-stone-100">Português</span>
+                            <span class="text-lg text-gray-300">Nativo</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-4">
+                            <div class="bg-brand-pink h-4 rounded-full" style="width: 100%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Inglês -->
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-lg font-bold text-stone-100">Inglês</span>
+                            <span class="text-lg text-gray-300">Avançado</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-4">
+                            <div class="bg-brand-pink h-4 rounded-full" style="width: 75%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Holandês -->
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-lg font-bold text-stone-100">Holandês</span>
+                            <span class="text-lg text-gray-300">Avançado</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-4">
+                            <div class="bg-brand-pink h-4 rounded-full" style="width: 75%"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SEÇÃO CASE DE SUCESSO -->
+        <section id="case-de-sucesso" class="mt-24 md:mt-32">
+            <div class="bg-card rounded-2xl p-8 md:p-12">
+                <h2 class="text-4xl font-bold text-center text-brand-pink mb-8">Case de Sucesso: E-commerce</h2>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto text-center leading-relaxed mb-12">
+                    Como Analista de Canal, liderei a otimização de performance e estratégia de crescimento em
+                    marketplaces. Focando na análise de dados, SEO e gestão de campanhas, alcançamos os seguintes
+                    resultados em 7 meses (Abr-Out), culminando na conquista do selo de Loja Oficial Shopee em Setembro:
+                </p>
+
+                <!-- Métricas -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-12">
+                    <div>
+                        <span class="text-6xl font-black text-brand-pink">+187%</span>
+                        <p class="text-xl text-gray-300 mt-2">em Faturamento</p>
+                    </div>
+                    <div>
+                        <!-- Ícone de Verificado -->
+                        <svg class="w-20 h-20 text-brand-pink mx-auto" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <p class="text-xl text-gray-300 mt-2">Loja Oficial Shopee</p>
+                    </div>
+                    <div>
+                        <span class="text-6xl font-black text-brand-pink">+218%</span>
+                        <p class="text-xl text-gray-300 mt-2">em Pedidos</p>
+                    </div>
+                </div>
+
+                <!-- Gráfico de Pedidos -->
+                <div class="w-full max-w-4xl mx-auto h-96">
+                    <canvas id="ordersChart"></canvas>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO EXPERIÊNCIA PROFISSIONAL -->
+        <section id="experiencia" class="mt-24 md:mt-32">
+            <div class="bg-card rounded-2xl p-8 md:p-12">
+                <h2 class="text-4xl font-bold text-center text-brand-pink mb-12">Experiência Profissional</h2>
+                <div class="space-y-10 max-w-3xl mx-auto">
+
+                    <!-- Item 1: Supercol -->
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <span class="text-3xl">🚀</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-stone-100">Analista de Canal (E-commerce)</h3>
+                            <p class="text-lg text-brand-pink mt-1">Supercol | 2025 – Presente</p>
+                            <p class="text-gray-300 mt-2">
+                                Gestão do portfólio de produtos, acompanhamento de indicadores (vendas, margem, giro),
+                                análise de performance, implementação de estratégias de conversão e monitoramento de
+                                concorrência.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Aguia Dourada -->
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <span class="text-3xl">🎨</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-stone-100">Designer Gráfico & Assistente de E-Commerce</h3>
+                            <p class="text-lg text-brand-pink mt-1">Aguia Dourada Modas | 2024</p>
+                            <p class="text-gray-300 mt-2">
+                                Gestão do catálogo de produtos em marketplaces (Mercado Livre, Shein, Magalu), criação de
+                                materiais visuais para anúncios e apoio aos processos de pós-venda e logística.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Gráfica NK -->
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <span class="text-3xl">🖥️</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-stone-100">Designer Gráfico</h3>
+                            <p class="text-lg text-brand-pink mt-1">Gráfica NK Sign | 2023</p>
+                            <p class="text-gray-300 mt-2">
+                                Atuação em gráfica rápida com foco em atendimento personalizado e entrega de projetos de
+                                alta qualidade (Photoshop & CorelDraw).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Cyber do Alan -->
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <span class="text-3xl">🤝</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-stone-100">Atendente de Serviços Online</h3>
+                            <p class="text-lg text-brand-pink mt-1">Cyber do Alan | 2020 – 2022</p>
+                            <p class="text-gray-300 mt-2">
+                                Atendimento ao público focado em serviços online, cadastros, elaboração de documentos e
+                                gestão de processos administrativos.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SEÇÃO FORMAÇÃO -->
+        <section id="formacao" class="mt-24 md:mt-32">
+            <div class="bg-card rounded-2xl p-8 md:p-12">
+                <h2 class="text-4xl font-bold text-center text-brand-pink mb-12">Formação</h2>
+                <div class="space-y-8 max-w-2xl mx-auto">
+                    <!-- Item 1: IFSP -->
+                    <div class="flex flex-col sm:flex-row items-center gap-6">
+                        <div class="flex-shrink-0">
+                            <span class="text-4xl">🎓</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-stone-100">Tecnologia em Análise e Desenvolvimento de
+                                Sistemas</h3>
+                            <p class="text-lg text-brand-pink mt-1">Instituto Federal de São Paulo (IFSP)</p>
+                            <p class="text-gray-400">2025 – 2027 (Cursando)</p>
+                        </div>
+                    </div>
+                    <!-- Item 2: Ensino Médio -->
+                    <div class="flex flex-col sm:flex-row items-center gap-6">
+                        <div class="flex-shrink-0">
+                            <span class="text-4xl">📚</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-stone-100">Ensino Médio</h3>
+                            <p class="text-lg text-brand-pink mt-1">E. E. República do Equador</p>
+                            <p class="text-gray-400">Concluído em 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- RODAPÉ E CONTATO -->
+        <footer id="contato" class="mt-24 md:mt-32 text-center border-t border-gray-800 pt-16 pb-8">
+            <h2 class="text-4xl font-bold text-stone-100">Vamos Conversar?</h2>
+            <p class="text-lg text-gray-300 mt-4 mb-8 max-w-xl mx-auto">
+                Estou disponível para novas oportunidades e projetos. Entre em contato.
+            </p>
+
+            <!-- Botão CTA do WhatsApp -->
+            <a href="https://wa.me/5511962652362" target="_blank" rel="noopener noreferrer"
+                class="btn-solid bg-brand-pink text-white font-bold py-4 px-8 rounded-full text-lg inline-block mb-12">
+                Chamar no WhatsApp
+            </a>
+
+            <!-- Ícones de Contato -->
+            <div class="flex justify-center space-x-8">
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/joeyfellipe" target="_blank" rel="noopener noreferrer"
+                    class="text-gray-400 hover:text-brand-pink transition-colors">
+                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                    <span class="sr-only">LinkedIn</span>
+                </a>
+                <!-- WhatsApp -->
+                <a href="https://wa.me/5511962652362" target="_blank" rel="noopener noreferrer"
+                    class="text-gray-400 hover:text-brand-pink transition-colors">
+                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.06 21.94L7.31 20.59C8.75 21.38 10.36 21.82 12.04 21.82C17.5 21.82 21.95 17.37 21.95 11.91C21.95 6.45 17.5 2 12.04 2ZM12.04 20.13C10.49 20.13 9 19.7 7.7 19.01L7.33 18.8L3.62 19.83L4.67 16.22L4.47 15.84C3.68 14.47 3.23 12.95 3.23 11.31C3.23 7.33 6.25 4.31 10.22 4.31C12.16 4.31 13.97 5.09 15.34 6.46C16.71 7.83 17.49 9.64 17.49 11.58C17.49 15.56 14.47 18.58 10.5 18.58C10.5 18.58 12.04 20.13 12.04 20.13Z" />
+                        <path
+                            d="M9.46 7.64C9.28 7.18 9.1 7.17 8.95 7.17C8.82 7.17 8.7 7.17 8.57 7.17C8.45 7.17 8.21 7.22 8 7.46C7.79 7.7 7.17 8.32 7.17 9.3C7.17 10.28 8.03 11.23 8.15 11.38C8.27 11.53 9.46 13.31 11.2 14.06C12.68 14.69 13.08 14.56 13.43 14.53C13.78 14.49 14.54 14.08 14.71 13.5C14.88 12.92 14.88 12.41 14.82 12.3C14.76 12.19 14.64 12.14 14.42 12.03C14.2 11.92 13.08 11.38 12.86 11.29C12.64 11.2 12.52 11.16 12.4 11.4C12.28 11.64 11.95 12.03 11.83 12.17C11.71 12.31 11.59 12.33 11.37 12.22C11.15 12.11 10.42 11.87 9.56 11.1C8.88 10.5 8.41 9.76 8.29 9.5C8.17 9.24 8.3 9.09 8.41 8.98C8.51 8.89 8.63 8.74 8.75 8.6C8.87 8.46 8.91 8.39 8.97 8.27C9.03 8.15 8.98 8.03 8.93 7.92C8.88 7.8 8.34 6.5 8.12 6.04L9.46 7.64Z" />
+                    </svg>
+                    <span class="sr-only">WhatsApp</span>
+                </a>
+                <!-- E-mail -->
+                <a href="mailto:joeyfellipe07@gmail.com"
+                    class="text-gray-400 hover:text-brand-pink transition-colors">
+                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
+                    </svg>
+                    <span class="sr-only">E-mail</span>
+                </a>
+            </div>
+
+            <!-- Direitos Autorais -->
+            <p class="text-gray-500 text-sm mt-16">
+                &copy; 2025 Joey Fellipe Kartowidjojo. Todos os direitos reservados.
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- Script do Menu Mobile e Gráfico -->
+    <script>
+        // Espera o DOM carregar completamente
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Script do Menu Mobile ---
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuButton && mobileMenu) {
+                // Alterna a visibilidade do menu
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                // Fecha o menu ao clicar em um link
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+
+            // --- Script do Gráfico de Pedidos ---
+            const ctx = document.getElementById('ordersChart');
+            if (ctx) {
+                const ordersData = {
+                    labels: ['Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro'],
+                    datasets: [{
+                        label: 'Pedidos por Mês',
+                        data: [533, 379, 509, 718, 1262, 1631, 1695],
+                        borderColor: 'var(--brand-pink)',
+                        backgroundColor: 'rgba(237, 7, 71, 0.2)', // Cor rosa com transparência
+                        borderWidth: 3,
+                        pointBackgroundColor: 'var(--brand-pink)',
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
+                        tension: 0.2, // Deixa a linha com curvas suaves
+                        fill: true
+                    }]
+                };
+
+                new Chart(ctx, {
+                    type: 'line',
+                    data: ordersData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.1)' // Linhas do grid Y
+                                },
+                                ticks: {
+                                    color: '#E0E0E0' // Cor dos números do eixo Y
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.1)' // Linhas do grid X
+                                },
+                                ticks: {
+                                    color: '#E0E0E0' // Cor dos meses do eixo X
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false // Isto esconde a legenda (a "caixinha")
+                            },
+                            tooltip: {
+                                backgroundColor: '#0A0A0A',
+                                titleColor: '#E0E0E0',
+                                bodyColor: '#E0E0E0',
+                                borderColor: 'var(--brand-pink)',
+                                borderWidth: 1,
+                                padding: 10
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
