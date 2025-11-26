@@ -4,519 +4,495 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joey Fellipe | Analista de E-commerce & Criador Digital</title>
+    <title>Joey Fellipe | Inteligência em E-commerce</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- Chart.js Library -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Configuração de Cores da Marca -->
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            pink: '#ED0747',
+                            dark: '#050505',
+                            glass: 'rgba(255, 255, 255, 0.03)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        :root {
-            --brand-pink: #ED0747;
-            /* Cor primária da marca (Rosa) */
-            --brand-blue: #206AED;
-            /* Cor secundária (não usada ativamente) */
-            --brand-card: #0A0A0A;
-            /* Cor de fundo dos cards */
-        }
-
-        /* Aplica a fonte Inter e o fundo escuro */
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #000000;
+            background-color: #050505;
             color: #E0E0E0;
+            overflow-x: hidden;
         }
 
-        /* Classes de cor personalizadas do Tailwind */
-        .text-brand-pink {
-            color: var(--brand-pink);
+        /* Scrollbar Personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ED0747;
         }
 
-        .bg-brand-pink {
-            background-color: var(--brand-pink);
+        /* Efeito Glassmorphism (Vidro) */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
         }
 
-        .border-brand-pink {
-            border-color: var(--brand-pink);
+        .glass-panel:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(237, 7, 71, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px -10px rgba(237, 7, 71, 0.15);
         }
 
-        .bg-card {
-            background-color: var(--brand-card);
-        }
-
-        /* Efeito de hover para botões de contorno */
-        .btn-outline {
+        /* Botões Neon */
+        .btn-neon {
+            background: #ED0747;
+            box-shadow: 0 0 10px rgba(237, 7, 71, 0.5);
             transition: all 0.3s ease;
         }
-
-        .btn-outline:hover {
-            background-color: var(--brand-pink);
-            color: white;
+        .btn-neon:hover {
+            box-shadow: 0 0 25px rgba(237, 7, 71, 0.8);
+            transform: scale(1.05);
         }
 
-        /* Efeito de hover para botões sólidos */
-        .btn-solid {
-            transition: all 0.3s ease;
+        /* Texto Gradiente */
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #999999);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .text-gradient-brand {
+            background: linear-gradient(to right, #ED0747, #ff5e8e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        .btn-solid:hover {
-            filter: brightness(1.2);
+        /* Background Blobs (Luzes de fundo) */
+        .bg-blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: -1;
+            animation: blob 10s infinite alternate;
         }
     </style>
 </head>
 
-<body class="w-full max-w-7xl mx-auto p-4 md:p-8">
+<body class="relative">
+
+    <!-- Elementos de Fundo (Luzes) -->
+    <div class="bg-blob bg-brand-pink w-96 h-96 top-0 left-[-100px]"></div>
+    <div class="bg-blob bg-blue-900 w-96 h-96 bottom-0 right-[-100px] animation-delay-2000"></div>
+    <div class="bg-blob bg-purple-900 w-80 h-80 top-[40%] left-[30%] opacity-20"></div>
 
     <!-- CABEÇALHO -->
-    <header class="fixed top-0 left-0 right-0 z-50 p-4 backdrop-blur-lg bg-black/80">
-        <div class="w-full max-w-7xl mx-auto flex justify-between items-center">
-            <!-- Logo/Nome -->
-            <a href="#" class="text-xl md:text-2xl font-bold text-stone-100">Joey Fellipe</a>
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 py-4">
+        <div class="max-w-7xl mx-auto glass-panel rounded-full px-6 py-3 flex justify-between items-center !transform-none !hover:transform-none">
+            <!-- Logo (Sem ponto) -->
+            <a href="#" class="text-lg md:text-xl font-bold tracking-wider text-white">JOEY <span class="text-brand-pink">FELLIPE</span></a>
 
             <!-- Menu Desktop -->
-            <nav class="hidden md:flex space-x-6">
-                <a href="#sobre" class="text-gray-300 hover:text-brand-pink transition-colors">Sobre</a>
-                <a href="#competencias" class="text-gray-300 hover:text-brand-pink transition-colors">Competências</a>
-                <a href="#idiomas" class="text-gray-300 hover:text-brand-pink transition-colors">Idiomas</a>
-                <a href="#case-de-sucesso" class="text-gray-300 hover:text-brand-pink transition-colors">Case</a>
-                <a href="#experiencia" class="text-gray-300 hover:text-brand-pink transition-colors">Experiência</a>
-                <a href="#formacao" class="text-gray-300 hover:text-brand-pink transition-colors">Formação</a>
-                <a href="#contato" class="text-gray-300 hover:text-brand-pink transition-colors">Contato</a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#sobre" class="text-gray-400 hover:text-white transition-colors">Sobre</a>
+                <a href="#competencias" class="text-gray-400 hover:text-white transition-colors">Competências</a>
+                <a href="#case-de-sucesso" class="text-gray-400 hover:text-white transition-colors">Case</a>
+                <a href="#experiencia" class="text-gray-400 hover:text-white transition-colors">Experiência</a>
+                <a href="#contato" class="text-gray-400 hover:text-white transition-colors">Contato</a>
             </nav>
 
+            <!-- Botão CTA Header -->
+            <a href="https://wa.me/5511962652362" target="_blank" class="hidden md:block px-5 py-2 rounded-full border border-gray-600 text-xs font-bold hover:bg-white hover:text-black transition-all">
+                FALE COMIGO
+            </a>
+
             <!-- Botão Menu Mobile -->
-            <button id="mobile-menu-button" class="md:hidden text-stone-100">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                    </path>
-                </svg>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
         </div>
 
-        <!-- Menu Mobile (Oculto) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-card rounded-2xl mt-4 p-4">
-            <nav class="flex flex-col space-y-4 text-center">
-                <a href="#sobre" class="text-gray-300 hover:text-brand-pink transition-colors">Sobre</a>
-                <a href="#competencias" class="text-gray-300 hover:text-brand-pink transition-colors">Competências</a>
-                <a href="#idiomas" class="text-gray-300 hover:text-brand-pink transition-colors">Idiomas</a>
-                <a href="#case-de-sucesso" class="text-gray-300 hover:text-brand-pink transition-colors">Case</a>
-                <a href="#experiencia" class="text-gray-300 hover:text-brand-pink transition-colors">Experiência</a>
-                <a href="#formacao" class="text-gray-300 hover:text-brand-pink transition-colors">Formação</a>
-                <a href="#contato" class="text-gray-300 hover:text-brand-pink transition-colors">Contato</a>
-            </nav>
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden absolute top-20 left-4 right-4 glass-panel rounded-2xl p-6 flex flex-col space-y-4 text-center z-50">
+            <a href="#sobre" class="text-gray-300 hover:text-brand-pink">Sobre</a>
+            <a href="#competencias" class="text-gray-300 hover:text-brand-pink">Competências</a>
+            <a href="#case-de-sucesso" class="text-gray-300 hover:text-brand-pink">Case</a>
+            <a href="#experiencia" class="text-gray-300 hover:text-brand-pink">Experiência</a>
+            <a href="#contato" class="text-gray-300 hover:text-brand-pink">Contato</a>
         </div>
     </header>
 
-    <main class="mt-24">
+    <main class="pt-24 md:pt-32 pb-12 px-4 md:px-8 max-w-7xl mx-auto">
 
         <!-- SEÇÃO HERO -->
-        <section id="hero" class="flex flex-col md:flex-row items-center justify-center gap-8 min-h-[60vh]">
-            <!-- Coluna de Texto -->
-            <div class="flex-1 text-center">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-stone-100 leading-tight">
-                    Joey Fellipe Kartowidjojo
+        <section id="hero" class="min-h-[50vh] md:min-h-[70vh] flex flex-col justify-center items-center text-center relative mt-4 md:mt-0">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <span class="px-4 py-1 rounded-full border border-brand-pink/30 bg-brand-pink/10 text-brand-pink text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 inline-block">
+                    Disponível para Projetos
+                </span>
+                <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-tight mb-2 tracking-tight">
+                    JOEY <span class="text-gradient-brand">FELLIPE</span>
                 </h1>
-                <h2 class="text-2xl sm:text-3xl font-bold text-brand-pink mt-4">
-                    Analista de E-commerce & Criador Digital.
+                <h2 class="text-lg md:text-2xl text-gray-400 font-light mb-8 max-w-xs md:max-w-none mx-auto">
+                    Analista de E-commerce Orientado a Dados & Criador
                 </h2>
-                <p class="text-lg text-gray-300 mt-6 max-w-xl mx-auto">
-                    Unindo Análise de Dados e Design para impulsionar resultados e criar conexões reais.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 mt-10 justify-center">
-                    <a href="https://www.linkedin.com/in/joeyfellipe" target="_blank" rel="noopener noreferrer"
-                        class="btn-solid bg-brand-pink text-white font-bold py-4 px-8 rounded-full text-lg w-full sm:w-auto">
-                        Acessar LinkedIn
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6 md:mt-8 w-full max-w-sm sm:max-w-none mx-auto">
+                    <a href="https://www.linkedin.com/in/joeyfellipe" target="_blank" 
+                       class="btn-neon text-white font-bold py-3 md:py-4 px-8 md:px-10 rounded-full text-xs md:text-sm tracking-wide uppercase">
+                        Perfil LinkedIn
                     </a>
-                    <a href="#case-de-sucesso"
-                        class="btn-outline border-2 border-brand-pink text-brand-pink font-bold py-4 px-8 rounded-full text-lg w-full sm:w-auto">
+                    <a href="#case-de-sucesso" 
+                       class="px-8 md:px-10 py-3 md:py-4 rounded-full border border-gray-600 text-white font-bold text-xs md:text-sm hover:bg-white hover:text-black transition-all uppercase">
                         Ver Case de Sucesso
                     </a>
                 </div>
             </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-0 animate-bounce text-gray-600 hidden md:block">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            </div>
         </section>
 
-        <!-- SEÇÃO SOBRE (Resumo Profissional) -->
-        <section id="sobre" class="mt-24 md:mt-32">
-            <div class="bg-card rounded-2xl p-8 md:p-12">
-                <h2 class="text-4xl font-bold text-center text-brand-pink mb-8">Sobre Mim</h2>
-                <p class="text-lg text-gray-300 max-w-3xl mx-auto text-center leading-relaxed">
-                    Analista de E-commerce com experiência em gestão e desenvolvimento de operações comerciais em
-                    marketplaces. Foco em análise de desempenho (vendas, margem, giro de estoque) e implementação de
-                    estratégias para aumento de conversão.
-                    <br><br>
-                    Possuo experiência consolidada como Criador Digital e Designer Gráfico, utilizando o marketing de
-                    conteúdo, design e gestão de mídias sociais para impulsionar a visibilidade e o engajamento.
-                    Atualmente cursando Tecnologia em Análise e Desenvolvimento de Sistemas, unindo visão de negócios
-                    orientada a dados com capacidade técnica e criativa.
-                </p>
+        <!-- SEÇÃO SOBRE -->
+        <section id="sobre" class="mt-16 md:mt-32" data-aos="fade-up">
+            <div class="glass-panel rounded-3xl p-6 md:p-16 text-center md:text-left flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <div class="flex-1">
+                    <h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-6">Analítico, Criativo e Estratégico</h2>
+                    <p class="text-gray-400 text-base md:text-lg leading-relaxed mb-4 md:mb-6">
+                        Não sou apenas um analista de planilhas. Sou um profissional que entende que por trás de cada dado existe um comportamento humano. 
+                        Combino a precisão da <strong class="text-white">Análise de Dados</strong> com a persuasão do <strong class="text-white">Design Visual</strong>.
+                    </p>
+                    <p class="text-gray-400 text-base md:text-lg leading-relaxed">
+                        Atualmente cursando ADS e focado em transformar operações de e-commerce em máquinas de vendas através de SEO, CRO e Branding.
+                    </p>
+                </div>
+                <!-- Estatísticas Rápidas -->
+                <div class="grid grid-cols-2 gap-3 md:gap-4 w-full md:w-auto">
+                    <div class="bg-white/5 p-4 md:p-6 rounded-2xl text-center border border-white/5">
+                        <span class="block text-2xl md:text-3xl font-bold text-white">+3</span>
+                        <span class="text-[10px] md:text-xs text-gray-500 uppercase">Anos de XP</span>
+                    </div>
+                    <div class="bg-white/5 p-4 md:p-6 rounded-2xl text-center border border-white/5">
+                        <span class="block text-2xl md:text-3xl font-bold text-white">ADS</span>
+                        <span class="text-[10px] md:text-xs text-gray-500 uppercase">Em Formação</span>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- SEÇÃO COMPETÊNCIAS -->
-        <section id="competencias" class="mt-24 md:mt-32">
-            <div class="bg-card rounded-2xl p-8 md:p-12">
-                <h2 class="text-4xl font-bold text-center text-brand-pink mb-12">Competências</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-                    <!-- Coluna Análise -->
-                    <div>
-                        <h3 class="text-2xl font-bold text-stone-100 mb-4">Análise & Estratégia de E-commerce</h3>
-                        <ul class="list-disc list-outside space-y-2 pl-5 text-gray-300">
-                            <li>Gestão de Marketplaces (Mercado Livre, Shopee, Magalu)</li>
-                            <li>Análise de Indicadores Comerciais (Vendas, Margem, ROI, Giro)</li>
-                            <li>Análise de Concorrência e Inteligência de Mercado</li>
-                            <li>Estratégias de SEO para Marketplaces</li>
-                            <li>Otimização de Conversão (CRO)</li>
-                        </ul>
+        <section id="competencias" class="mt-16 md:mt-32">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-16 text-gradient" data-aos="fade-up">Minhas Competências</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <!-- Card 1 -->
+                <div class="glass-panel rounded-3xl p-6 md:p-10" data-aos="fade-right">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-brand-pink/20 rounded-xl flex items-center justify-center mb-4 md:mb-6 text-brand-pink">
+                        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                     </div>
-                    <!-- Coluna Design -->
-                    <div>
-                        <h3 class="text-2xl font-bold text-stone-100 mb-4">Design & Marketing Digital</h3>
-                        <ul class="list-disc list-outside space-y-2 pl-5 text-gray-300">
-                            <li>Design Gráfico (Photoshop & CorelDraw)</li>
-                            <li>Criação e Edição de Vídeo</li>
-                            <li>Marketing de Conteúdo e Social Media</li>
-                            <li>Construção de Identidade Visual</li>
-                            <li>Comunicação e Atendimento ao Público</li>
-                        </ul>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Inteligência de E-commerce</h3>
+                    <ul class="space-y-2 md:space-y-3 text-sm md:text-base text-gray-400">
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-brand-pink rounded-full mr-3"></span>Gestão de Marketplaces (Shopee, ML, Magalu)</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-brand-pink rounded-full mr-3"></span>Análise de KPIs (Margem, Giro, ROI)</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-brand-pink rounded-full mr-3"></span>SEO & CRO para Anúncios</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-brand-pink rounded-full mr-3"></span>Inteligência Competitiva</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-panel rounded-3xl p-6 md:p-10" data-aos="fade-left">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4 md:mb-6 text-blue-400">
+                        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
                     </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Criatividade & Tecnologia</h3>
+                    <ul class="space-y-2 md:space-y-3 text-sm md:text-base text-gray-400">
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Design Gráfico (Photoshop & Corel)</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Edição de Vídeo & Motion</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Estratégia de Redes Sociais</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Lógica de Programação</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO IDIOMAS -->
-        <section id="idiomas" class="mt-24 md:mt-32">
-            <div class="bg-card rounded-2xl p-8 md:p-12">
-                <h2 class="text-4xl font-bold text-center text-brand-pink mb-12">Idiomas</h2>
-                <div class="space-y-8 max-w-2xl mx-auto">
-
-                    <!-- Português -->
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="text-lg font-bold text-stone-100">Português</span>
-                            <span class="text-lg text-gray-300">Nativo</span>
-                        </div>
-                        <div class="w-full bg-gray-700 rounded-full h-4">
-                            <div class="bg-brand-pink h-4 rounded-full" style="width: 100%"></div>
-                        </div>
-                    </div>
-
-                    <!-- Inglês -->
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="text-lg font-bold text-stone-100">Inglês</span>
-                            <span class="text-lg text-gray-300">Avançado</span>
-                        </div>
-                        <div class="w-full bg-gray-700 rounded-full h-4">
-                            <div class="bg-brand-pink h-4 rounded-full" style="width: 75%"></div>
-                        </div>
-                    </div>
-
-                    <!-- Holandês -->
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="text-lg font-bold text-stone-100">Holandês</span>
-                            <span class="text-lg text-gray-300">Avançado</span>
-                        </div>
-                        <div class="w-full bg-gray-700 rounded-full h-4">
-                            <div class="bg-brand-pink h-4 rounded-full" style="width: 75%"></div>
-                        </div>
-                    </div>
-
+        <!-- SEÇÃO IDIOMAS (Ultra Compacta no Mobile) -->
+        <section id="idiomas" class="mt-12 md:mt-20" data-aos="zoom-in">
+             <div class="glass-panel rounded-2xl p-4 md:p-8 max-w-4xl mx-auto flex flex-row justify-around text-center gap-2 md:gap-8 overflow-x-auto">
+                <div class="min-w-[80px]">
+                    <h4 class="text-gray-500 text-[10px] uppercase tracking-widest mb-1">Nativo</h4>
+                    <p class="text-sm md:text-xl font-bold">Português 🇧🇷</p>
                 </div>
-            </div>
+                <div class="w-px bg-white/10 h-10 self-center"></div>
+                <div class="min-w-[80px]">
+                    <h4 class="text-gray-500 text-[10px] uppercase tracking-widest mb-1">Avançado</h4>
+                    <p class="text-sm md:text-xl font-bold">Inglês 🇺🇸</p>
+                </div>
+                <div class="w-px bg-white/10 h-10 self-center"></div>
+                <div class="min-w-[80px]">
+                    <h4 class="text-gray-500 text-[10px] uppercase tracking-widest mb-1">Avançado</h4>
+                    <p class="text-sm md:text-xl font-bold">Holandês 🇳🇱</p>
+                </div>
+             </div>
         </section>
-
 
         <!-- SEÇÃO CASE DE SUCESSO -->
-        <section id="case-de-sucesso" class="mt-24 md:mt-32">
-            <div class="bg-card rounded-2xl p-8 md:p-12">
-                <h2 class="text-4xl font-bold text-center text-brand-pink mb-8">Case de Sucesso: E-commerce</h2>
-                <p class="text-lg text-gray-300 max-w-3xl mx-auto text-center leading-relaxed mb-12">
-                    Como Analista de Canal, liderei a otimização de performance e estratégia de crescimento em
-                    marketplaces. Focando na análise de dados, SEO e gestão de campanhas, alcançamos os seguintes
-                    resultados em 7 meses (Abr-Out), culminando na conquista do selo de Loja Oficial Shopee em Setembro:
-                </p>
+        <section id="case-de-sucesso" class="mt-16 md:mt-32">
+            <div class="glass-panel rounded-3xl p-6 md:p-12 relative overflow-hidden" data-aos="fade-up">
+                <!-- Efeito Glow interno -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-pink/10 blur-3xl rounded-full pointer-events-none"></div>
 
-                <!-- Métricas -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-12">
-                    <div>
-                        <span class="text-6xl font-black text-brand-pink">+187%</span>
-                        <p class="text-xl text-gray-300 mt-2">em Faturamento</p>
+                <div class="text-center mb-8 md:mb-12 relative z-10">
+                    <span class="text-brand-pink font-bold tracking-widest uppercase text-xs md:text-sm">Relatório de Performance</span>
+                    <h2 class="text-3xl md:text-5xl font-bold mt-2 mb-4 md:mb-6">Case Shopee 2025</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
+                        Otimização completa de canal em 7 meses. Estratégia focada em dados resultou na conquista do selo <span class="text-white font-bold">Loja Oficial</span>.
+                    </p>
+                </div>
+
+                <!-- Grid ajustado para mobile (2 colunas para as métricas de números) -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-12">
+                    <div class="bg-black/40 rounded-2xl p-4 md:p-6 text-center border border-white/5 hover:border-brand-pink/50 transition-colors">
+                        <span class="block text-3xl md:text-5xl font-black text-brand-pink mb-1 md:mb-2">+187%</span>
+                        <span class="text-gray-400 text-xs md:text-sm">Faturamento</span>
                     </div>
-                    <div>
-                        <!-- Ícone de Verificado -->
-                        <svg class="w-20 h-20 text-brand-pink mx-auto" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        <p class="text-xl text-gray-300 mt-2">Loja Oficial Shopee</p>
+                    <div class="bg-black/40 rounded-2xl p-4 md:p-6 text-center border border-white/5 hover:border-brand-pink/50 transition-colors">
+                        <span class="block text-3xl md:text-5xl font-black text-brand-pink mb-1 md:mb-2">+218%</span>
+                        <span class="text-gray-400 text-xs md:text-sm">Volume de Pedidos</span>
                     </div>
-                    <div>
-                        <span class="text-6xl font-black text-brand-pink">+218%</span>
-                        <p class="text-xl text-gray-300 mt-2">em Pedidos</p>
+                    <!-- Card do Selo ocupa 2 colunas no mobile -->
+                    <div class="col-span-2 md:col-span-1 bg-black/40 rounded-2xl p-4 md:p-6 text-center border border-white/5 hover:border-brand-pink/50 transition-colors flex flex-col justify-center items-center">
+                        <svg class="w-8 h-8 md:w-10 md:h-10 text-brand-pink mb-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <span class="text-gray-400 text-xs md:text-sm">Selo Shopee Oficial</span>
                     </div>
                 </div>
 
-                <!-- Gráfico de Pedidos -->
-                <div class="w-full max-w-4xl mx-auto h-96">
+                <div class="w-full h-[250px] md:h-[400px]">
                     <canvas id="ordersChart"></canvas>
                 </div>
-
             </div>
         </section>
 
-        <!-- SEÇÃO EXPERIÊNCIA PROFISSIONAL -->
-        <section id="experiencia" class="mt-24 md:mt-32">
-            <div class="bg-card rounded-2xl p-8 md:p-12">
-                <h2 class="text-4xl font-bold text-center text-brand-pink mb-12">Experiência Profissional</h2>
-                <div class="space-y-10 max-w-3xl mx-auto">
-
-                    <!-- Item 1: Supercol -->
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0">
-                            <span class="text-3xl">🚀</span>
+        <!-- SEÇÃO EXPERIÊNCIA (Timeline Compacta) -->
+        <section id="experiencia" class="mt-16 md:mt-32">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-16 px-4" data-aos="fade-right">Trajetória Profissional</h2>
+            
+            <div class="space-y-4 md:space-y-6 relative border-l border-gray-800 ml-4 md:ml-10">
+                
+                <!-- Item 1 -->
+                <div class="relative pl-6 md:pl-12" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-pink shadow-[0_0_10px_#ED0747]"></div>
+                    <div class="glass-panel p-5 md:p-6 rounded-2xl">
+                        <div class="flex flex-col md:flex-row justify-between mb-1">
+                            <h3 class="text-lg md:text-xl font-bold text-white">Analista de Canal (E-commerce)</h3>
+                            <span class="text-brand-pink font-mono text-xs md:text-sm">2025 - Presente</span>
                         </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-stone-100">Analista de Canal (E-commerce)</h3>
-                            <p class="text-lg text-brand-pink mt-1">Supercol | 2025 – Presente</p>
-                            <p class="text-gray-300 mt-2">
-                                Gestão do portfólio de produtos, acompanhamento de indicadores (vendas, margem, giro),
-                                análise de performance, implementação de estratégias de conversão e monitoramento de
-                                concorrência.
-                            </p>
-                        </div>
+                        <p class="text-gray-500 text-xs md:text-sm mb-3">Supercol</p>
+                        <p class="text-gray-400 text-sm md:text-base">Gestão de portfólio, análise de performance (vendas, margem, giro) e implementação de estratégias de conversão em marketplaces.</p>
                     </div>
-
-                    <!-- Item 2: Aguia Dourada -->
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0">
-                            <span class="text-3xl">🎨</span>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-stone-100">Designer Gráfico & Assistente de E-Commerce</h3>
-                            <p class="text-lg text-brand-pink mt-1">Aguia Dourada Modas | 2024</p>
-                            <p class="text-gray-300 mt-2">
-                                Gestão do catálogo de produtos em marketplaces (Mercado Livre, Shein, Magalu), criação de
-                                materiais visuais para anúncios e apoio aos processos de pós-venda e logística.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Item 3: Gráfica NK -->
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0">
-                            <span class="text-3xl">🖥️</span>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-stone-100">Designer Gráfico</h3>
-                            <p class="text-lg text-brand-pink mt-1">Gráfica NK Sign | 2023</p>
-                            <p class="text-gray-300 mt-2">
-                                Atuação em gráfica rápida com foco em atendimento personalizado e entrega de projetos de
-                                alta qualidade (Photoshop & CorelDraw).
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Item 4: Cyber do Alan -->
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0">
-                            <span class="text-3xl">🤝</span>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-stone-100">Atendente de Serviços Online</h3>
-                            <p class="text-lg text-brand-pink mt-1">Cyber do Alan | 2020 – 2022</p>
-                            <p class="text-gray-300 mt-2">
-                                Atendimento ao público focado em serviços online, cadastros, elaboração de documentos e
-                                gestão de processos administrativos.
-                            </p>
-                        </div>
-                    </div>
-
                 </div>
+
+                <!-- Item 2 -->
+                <div class="relative pl-6 md:pl-12" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute -left-[5px] top-2 w-2 h-2 rounded-full bg-gray-600"></div>
+                    <div class="glass-panel p-5 md:p-6 rounded-2xl opacity-80 hover:opacity-100">
+                        <div class="flex flex-col md:flex-row justify-between mb-1">
+                            <h3 class="text-lg md:text-xl font-bold text-white">Designer Gráfico & E-Commerce</h3>
+                            <span class="text-gray-500 font-mono text-xs md:text-sm">2024</span>
+                        </div>
+                        <p class="text-gray-500 text-xs md:text-sm mb-3">Aguia Dourada Modas</p>
+                        <p class="text-gray-400 text-sm md:text-base">Criação de identidade visual para anúncios e gestão de catálogo no Mercado Livre e Shein.</p>
+                    </div>
+                </div>
+
+                 <!-- Item 3 -->
+                 <div class="relative pl-6 md:pl-12" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute -left-[5px] top-2 w-2 h-2 rounded-full bg-gray-600"></div>
+                    <div class="glass-panel p-5 md:p-6 rounded-2xl opacity-60 hover:opacity-100">
+                        <h3 class="text-base md:text-lg font-bold text-white">Designer Gráfico</h3>
+                        <p class="text-gray-500 text-xs md:text-sm">Gráfica NK Sign | 2023</p>
+                    </div>
+                </div>
+
             </div>
         </section>
-
 
         <!-- SEÇÃO FORMAÇÃO -->
-        <section id="formacao" class="mt-24 md:mt-32">
-            <div class="bg-card rounded-2xl p-8 md:p-12">
-                <h2 class="text-4xl font-bold text-center text-brand-pink mb-12">Formação</h2>
-                <div class="space-y-8 max-w-2xl mx-auto">
-                    <!-- Item 1: IFSP -->
-                    <div class="flex flex-col sm:flex-row items-center gap-6">
-                        <div class="flex-shrink-0">
-                            <span class="text-4xl">🎓</span>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-stone-100">Tecnologia em Análise e Desenvolvimento de
-                                Sistemas</h3>
-                            <p class="text-lg text-brand-pink mt-1">Instituto Federal de São Paulo (IFSP)</p>
-                            <p class="text-gray-400">2025 – 2027 (Cursando)</p>
-                        </div>
-                    </div>
-                    <!-- Item 2: Ensino Médio -->
-                    <div class="flex flex-col sm:flex-row items-center gap-6">
-                        <div class="flex-shrink-0">
-                            <span class="text-4xl">📚</span>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-stone-100">Ensino Médio</h3>
-                            <p class="text-lg text-brand-pink mt-1">E. E. República do Equador</p>
-                            <p class="text-gray-400">Concluído em 2024</p>
-                        </div>
-                    </div>
+        <section id="formacao" class="mt-16 md:mt-32">
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6" data-aos="fade-up">
+                <div class="glass-panel p-6 md:p-8 rounded-2xl border-l-4 border-brand-pink">
+                    <span class="text-2xl md:text-3xl mb-3 block">🎓</span>
+                    <h3 class="text-lg md:text-xl font-bold text-white">Análise e Desenvolvimento de Sistemas</h3>
+                    <p class="text-gray-400 text-sm md:text-base mt-1">Instituto Federal de São Paulo (IFSP)</p>
+                    <p class="text-brand-pink text-xs md:text-sm mt-2">2025 – 2027 (Cursando)</p>
                 </div>
-            </div>
+                <div class="glass-panel p-6 md:p-8 rounded-2xl border-l-4 border-gray-700">
+                    <span class="text-2xl md:text-3xl mb-3 block">📚</span>
+                    <h3 class="text-lg md:text-xl font-bold text-white">Ensino Médio</h3>
+                    <p class="text-gray-400 text-sm md:text-base mt-1">E. E. República do Equador</p>
+                    <p class="text-gray-500 text-xs md:text-sm mt-2">Concluído em 2024</p>
+                </div>
+             </div>
         </section>
 
-
-        <!-- RODAPÉ E CONTATO -->
-        <footer id="contato" class="mt-24 md:mt-32 text-center border-t border-gray-800 pt-16 pb-8">
-            <h2 class="text-4xl font-bold text-stone-100">Vamos Conversar?</h2>
-            <p class="text-lg text-gray-300 mt-4 mb-8 max-w-xl mx-auto">
-                Estou disponível para novas oportunidades e projetos. Entre em contato.
-            </p>
-
-            <!-- Botão CTA do WhatsApp -->
-            <a href="https://wa.me/5511962652362" target="_blank" rel="noopener noreferrer"
-                class="btn-solid bg-brand-pink text-white font-bold py-4 px-8 rounded-full text-lg inline-block mb-12">
+        <!-- FOOTER -->
+        <footer id="contato" class="mt-16 md:mt-32 border-t border-white/10 pt-12 md:pt-20 pb-8 md:pb-10 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6" data-aos="zoom-in">Vamos Trabalhar Juntos?</h2>
+            <p class="text-gray-400 mb-8 md:mb-10 text-base md:text-lg">Pronto para elevar o nível do seu projeto?</p>
+            
+            <a href="https://wa.me/5511962652362" target="_blank" class="btn-neon inline-block text-white font-bold py-3 md:py-4 px-10 md:px-12 rounded-full text-sm md:text-lg mb-10 md:mb-16 uppercase">
                 Chamar no WhatsApp
             </a>
 
-            <!-- Ícones de Contato -->
-            <div class="flex justify-center space-x-8">
-                <!-- LinkedIn -->
-                <a href="https://www.linkedin.com/in/joeyfellipe" target="_blank" rel="noopener noreferrer"
-                    class="text-gray-400 hover:text-brand-pink transition-colors">
-                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                    </svg>
-                    <span class="sr-only">LinkedIn</span>
+            <div class="flex justify-center gap-6 md:gap-8 mb-8 md:mb-12">
+                <a href="https://www.linkedin.com/in/joeyfellipe" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110">
+                    <svg class="w-6 h-6 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 </a>
-                <!-- WhatsApp -->
-                <a href="https://wa.me/5511962652362" target="_blank" rel="noopener noreferrer"
-                    class="text-gray-400 hover:text-brand-pink transition-colors">
-                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path
-                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.06 21.94L7.31 20.59C8.75 21.38 10.36 21.82 12.04 21.82C17.5 21.82 21.95 17.37 21.95 11.91C21.95 6.45 17.5 2 12.04 2ZM12.04 20.13C10.49 20.13 9 19.7 7.7 19.01L7.33 18.8L3.62 19.83L4.67 16.22L4.47 15.84C3.68 14.47 3.23 12.95 3.23 11.31C3.23 7.33 6.25 4.31 10.22 4.31C12.16 4.31 13.97 5.09 15.34 6.46C16.71 7.83 17.49 9.64 17.49 11.58C17.49 15.56 14.47 18.58 10.5 18.58C10.5 18.58 12.04 20.13 12.04 20.13Z" />
-                        <path
-                            d="M9.46 7.64C9.28 7.18 9.1 7.17 8.95 7.17C8.82 7.17 8.7 7.17 8.57 7.17C8.45 7.17 8.21 7.22 8 7.46C7.79 7.7 7.17 8.32 7.17 9.3C7.17 10.28 8.03 11.23 8.15 11.38C8.27 11.53 9.46 13.31 11.2 14.06C12.68 14.69 13.08 14.56 13.43 14.53C13.78 14.49 14.54 14.08 14.71 13.5C14.88 12.92 14.88 12.41 14.82 12.3C14.76 12.19 14.64 12.14 14.42 12.03C14.2 11.92 13.08 11.38 12.86 11.29C12.64 11.2 12.52 11.16 12.4 11.4C12.28 11.64 11.95 12.03 11.83 12.17C11.71 12.31 11.59 12.33 11.37 12.22C11.15 12.11 10.42 11.87 9.56 11.1C8.88 10.5 8.41 9.76 8.29 9.5C8.17 9.24 8.3 9.09 8.41 8.98C8.51 8.89 8.63 8.74 8.75 8.6C8.87 8.46 8.91 8.39 8.97 8.27C9.03 8.15 8.98 8.03 8.93 7.92C8.88 7.8 8.34 6.5 8.12 6.04L9.46 7.64Z" />
-                    </svg>
-                    <span class="sr-only">WhatsApp</span>
-                </a>
-                <!-- E-mail -->
-                <a href="mailto:joeyfellipe07@gmail.com"
-                    class="text-gray-400 hover:text-brand-pink transition-colors">
-                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path
-                            d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
-                    </svg>
-                    <span class="sr-only">E-mail</span>
+                <a href="mailto:joeyfellipe07@gmail.com" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110">
+                    <svg class="w-6 h-6 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
                 </a>
             </div>
 
-            <!-- Direitos Autorais -->
-            <p class="text-gray-500 text-sm mt-16">
-                &copy; 2025 Joey Fellipe Kartowidjojo. Todos os direitos reservados.
+            <p class="text-gray-600 text-xs md:text-sm">
+                &copy; 2025 Joey Fellipe. Desenvolvido com Paixão.
             </p>
         </footer>
 
     </main>
 
-    <!-- Script do Menu Mobile e Gráfico -->
     <script>
-        // Espera o DOM carregar completamente
-        document.addEventListener('DOMContentLoaded', () => {
+        // Inicializar AOS (Animate On Scroll)
+        AOS.init({
+            once: true,
+            offset: 50, // Menor offset para mobile
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
 
-            // --- Script do Menu Mobile ---
-            const menuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
+        // Script Menu Mobile
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-            if (menuButton && mobileMenu) {
-                // Alterna a visibilidade do menu
-                menuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
+        if (menuButton && mobileMenu) {
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            });
+        }
 
-                // Fecha o menu ao clicar em um link
-                mobileMenu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.add('hidden');
-                    });
-                });
-            }
+        // Script do Gráfico (Chart.js Style)
+        const ctx = document.getElementById('ordersChart');
+        if (ctx) {
+            // Criar gradiente para o gráfico
+            const gradientCtx = ctx.getContext('2d');
+            const gradient = gradientCtx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(237, 7, 71, 0.5)'); // Rosa forte no topo
+            gradient.addColorStop(1, 'rgba(237, 7, 71, 0)');   // Transparente embaixo
 
-            // --- Script do Gráfico de Pedidos ---
-            const ctx = document.getElementById('ordersChart');
-            if (ctx) {
-                const ordersData = {
-                    labels: ['Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro'],
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out'],
                     datasets: [{
-                        label: 'Pedidos por Mês',
+                        label: 'Pedidos',
                         data: [533, 379, 509, 718, 1262, 1631, 1695],
-                        borderColor: 'var(--brand-pink)',
-                        backgroundColor: 'rgba(237, 7, 71, 0.2)', // Cor rosa com transparência
+                        borderColor: '#ED0747',
+                        backgroundColor: gradient,
                         borderWidth: 3,
-                        pointBackgroundColor: 'var(--brand-pink)',
-                        pointRadius: 4,
-                        pointHoverRadius: 6,
-                        tension: 0.2, // Deixa a linha com curvas suaves
+                        pointBackgroundColor: '#000',
+                        pointBorderColor: '#ED0747',
+                        pointBorderWidth: 2,
+                        pointRadius: 6,
+                        pointHoverRadius: 8,
+                        tension: 0.4, // Curva mais suave
                         fill: true
                     }]
-                };
-
-                new Chart(ctx, {
-                    type: 'line',
-                    data: ordersData,
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            y: {
-                                beginAtZero: false,
-                                grid: {
-                                    color: 'rgba(255, 255, 255, 0.1)' // Linhas do grid Y
-                                },
-                                ticks: {
-                                    color: '#E0E0E0' // Cor dos números do eixo Y
-                                }
-                            },
-                            x: {
-                                grid: {
-                                    color: 'rgba(255, 255, 255, 0.1)' // Linhas do grid X
-                                },
-                                ticks: {
-                                    color: '#E0E0E0' // Cor dos meses do eixo X
-                                }
-                            }
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            titleColor: '#fff',
+                            bodyColor: '#ED0747',
+                            borderColor: 'rgba(255,255,255,0.1)',
+                            borderWidth: 1,
+                            padding: 12,
+                            displayColors: false,
+                            titleFont: { size: 14 },
+                            bodyFont: { size: 16, weight: 'bold' }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#666', font: { family: 'Inter' } },
+                            border: { display: false }
                         },
-                        plugins: {
-                            legend: {
-                                display: false // Isto esconde a legenda (a "caixinha")
-                            },
-                            tooltip: {
-                                backgroundColor: '#0A0A0A',
-                                titleColor: '#E0E0E0',
-                                bodyColor: '#E0E0E0',
-                                borderColor: 'var(--brand-pink)',
-                                borderWidth: 1,
-                                padding: 10
-                            }
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#666', font: { family: 'Inter' } },
+                            border: { display: false }
                         }
                     }
-                });
-            }
-        });
+                }
+            });
+        }
     </script>
-
 </body>
-
 </html>
