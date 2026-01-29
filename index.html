@@ -1,531 +1,366 @@
 <!DOCTYPE html>
 <html lang="pt-br" class="scroll-smooth">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joey Fellipe | Inteligência em E-commerce</title>
-    <!-- Tailwind CSS -->
+    <title>Joey Fellipe Kartowidjojo | Portfólio Profissional</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            pink: '#ED0747',
-                            dark: '#050505',
-                            glass: 'rgba(255, 255, 255, 0.03)'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    animation: {
-                        'blob': 'blob 7s infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
+            font-family: 'Inter', sans-serif;
             background-color: #050505;
-            color: #E0E0E0;
+            color: #f0f0f0;
             overflow-x: hidden;
         }
 
-        /* Scrollbar Personalizada */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #050505;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #ED0747;
+        /* Background Gradients */
+        .bg-gradient-radial {
+            background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, #050505 70%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
 
-        /* Efeito Glassmorphism (Vidro) */
-        .glass-panel {
+        .blob {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #3730a3 0%, #4338ca 100%);
+            filter: blur(80px);
+            border-radius: 50%;
+            opacity: 0.15;
+            z-index: -1;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(20%, 30%); }
+        }
+
+        /* Glassmorphism Classes */
+        .glass-card {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            transition: all 0.4s ease;
-        }
-
-        .glass-panel:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(237, 7, 71, 0.3);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px -10px rgba(237, 7, 71, 0.15);
-        }
-
-        /* Botões Neon */
-        .btn-neon {
-            background: #ED0747;
-            box-shadow: 0 0 10px rgba(237, 7, 71, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
             transition: all 0.3s ease;
         }
-        .btn-neon:hover {
-            box-shadow: 0 0 25px rgba(237, 7, 71, 0.8);
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .glass-nav {
+            background: rgba(5, 5, 5, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .skill-badge:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Botão de Contato Estilizado */
+        .btn-primary {
+            background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn-primary:hover {
             transform: scale(1.05);
-        }
-
-        /* Texto Gradiente */
-        .text-gradient {
-            background: linear-gradient(to right, #ffffff, #999999);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .text-gradient-brand {
-            background: linear-gradient(to right, #ED0747, #ff5e8e);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        /* Background Blobs (Luzes de fundo) */
-        .bg-blob {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            z-index: -1;
-            animation: blob 10s infinite alternate;
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
         }
     </style>
 </head>
+<body>
 
-<body class="relative">
+    <div class="bg-gradient-radial"></div>
+    <div class="blob" style="top: 10%; left: 10%;"></div>
+    <div class="blob" style="bottom: 10%; right: 10%; animation-delay: -5s; background: #312e81;"></div>
 
-    <!-- Elementos de Fundo (Luzes) -->
-    <div class="bg-blob bg-brand-pink w-96 h-96 top-0 left-[-100px]"></div>
-    <div class="bg-blob bg-blue-900 w-96 h-96 bottom-0 right-[-100px] animation-delay-2000"></div>
-    <div class="bg-blob bg-purple-900 w-80 h-80 top-[40%] left-[30%] opacity-20"></div>
-
-    <!-- CABEÇALHO -->
-    <header class="fixed top-0 left-0 right-0 z-50 px-4 py-4">
-        <div class="max-w-7xl mx-auto glass-panel rounded-full px-6 py-3 flex justify-between items-center !transform-none !hover:transform-none">
-            <!-- Logo (Sem ponto) -->
-            <a href="#" class="text-lg md:text-xl font-bold tracking-wider text-white">JOEY <span class="text-brand-pink">FELLIPE</span></a>
-
-            <!-- Menu Desktop -->
-            <nav class="hidden md:flex space-x-8 text-sm font-medium">
-                <a href="#sobre" class="text-gray-400 hover:text-white transition-colors">Sobre</a>
-                <a href="#competencias" class="text-gray-400 hover:text-white transition-colors">Competências</a>
-                <a href="#case-de-sucesso" class="text-gray-400 hover:text-white transition-colors">Case</a>
-                <a href="#experiencia" class="text-gray-400 hover:text-white transition-colors">Experiência</a>
-                <a href="#contato" class="text-gray-400 hover:text-white transition-colors">Contato</a>
-            </nav>
-
-            <!-- Botão CTA Header -->
-            <a href="https://wa.me/5511962652362" target="_blank" class="hidden md:block px-5 py-2 rounded-full border border-gray-600 text-xs font-bold hover:bg-white hover:text-black transition-all">
-                FALE COMIGO
-            </a>
-
-            <!-- Botão Menu Mobile -->
-            <button id="mobile-menu-button" class="md:hidden text-white">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <span class="font-bold tracking-tight text-xl">Joey<span class="text-indigo-400">.</span></span>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                <a href="#home" class="hover:text-white transition-colors">Início</a>
+                <a href="#sobre" class="hover:text-white transition-colors">Sobre</a>
+                <a href="#experiencia" class="hover:text-white transition-colors">Experiência</a>
+                <a href="#competencias" class="hover:text-white transition-colors">Competências</a>
+                <a href="#contato" class="hover:text-white transition-colors">Contato</a>
+            </div>
+            <a href="https://wa.me/5511962652362" target="_blank" class="bg-indigo-600 hover:bg-indigo-500 px-5 py-2 rounded-full text-sm font-semibold transition-all">WhatsApp</a>
         </div>
+    </nav>
 
-        <!-- Menu Mobile -->
-        <div id="mobile-menu" class="hidden absolute top-20 left-4 right-4 glass-panel rounded-2xl p-6 flex flex-col space-y-4 text-center z-50">
-            <a href="#sobre" class="text-gray-300 hover:text-brand-pink">Sobre</a>
-            <a href="#competencias" class="text-gray-300 hover:text-brand-pink">Competências</a>
-            <a href="#case-de-sucesso" class="text-gray-300 hover:text-brand-pink">Case</a>
-            <a href="#experiencia" class="text-gray-300 hover:text-brand-pink">Experiência</a>
-            <a href="#contato" class="text-gray-300 hover:text-brand-pink">Contato</a>
+    <!-- 1. Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center px-6 pt-20">
+        <div class="max-w-4xl w-full text-center">
+            <h2 class="text-indigo-400 font-semibold tracking-widest uppercase text-sm mb-4 reveal">Designer Gráfico | Comunicação Visual</h2>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight reveal">Joey Fellipe <br><span class="text-gray-400">Kartowidjojo</span></h1>
+            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto reveal">Design aplicado a negócios e soluções reais. Foco em resultados através da comunicação visual estratégica e e-commerce.</p>
+            <div class="flex flex-wrap justify-center gap-4 reveal">
+                <a href="#contato" class="btn-primary text-white px-8 py-3 rounded-full font-bold">Falar Comigo</a>
+                <a href="#experiencia" class="glass-card px-8 py-3 rounded-full font-bold hover:bg-white/10 transition-all">Ver Experiências</a>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <main class="pt-24 md:pt-32 pb-12 px-4 md:px-8 max-w-7xl mx-auto">
+    <!-- 2. Sobre Mim -->
+    <section id="sobre" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <h2 class="text-3xl font-bold mb-6">Sobre Mim</h2>
+                    <div class="space-y-4 text-gray-400 leading-relaxed text-lg">
+                        <p>
+                            Sou um designer gráfico com sólida experiência prática, tendo atuado em diversos nichos da comunicação visual, desde gráficas rápidas até operações complexas de e-commerce.
+                        </p>
+                        <p>
+                            Atualmente, sou estudante de <strong>Análise e Desenvolvimento de Sistemas (IFSP)</strong>, o que me permite unir a estética visual à funcionalidade tecnológica. Meu perfil é versátil, adaptável e focado em resolver problemas reais através do design.
+                        </p>
+                        <p>
+                            Acredito que o design funcional deve ser acessível e orientado para gerar valor ao negócio e aos diferentes públicos que ele atende.
+                        </p>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <div class="glass-card p-8 border-indigo-500/20 relative">
+                        <div class="absolute -top-4 -right-4 bg-indigo-600 p-3 rounded-xl rotate-12 shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-white">Minha Abordagem</h3>
+                        <ul class="space-y-4">
+                            <li class="flex gap-3">
+                                <span class="text-indigo-400 font-bold">●</span>
+                                <span>Design orientado a conversão e vendas.</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="text-indigo-400 font-bold">●</span>
+                                <span>Domínio de impressão e pré-impressão.</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="text-indigo-400 font-bold">●</span>
+                                <span>Foco em branding e apresentação de produtos.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- SEÇÃO HERO -->
-        <section id="hero" class="min-h-[50vh] md:min-h-[70vh] flex flex-col justify-center items-center text-center relative mt-4 md:mt-0">
-            <div data-aos="fade-up" data-aos-duration="1000">
-                <span class="px-4 py-1 rounded-full border border-brand-pink/30 bg-brand-pink/10 text-brand-pink text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 inline-block">
-                    Disponível para Projetos
-                </span>
-                <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-tight mb-2 tracking-tight">
-                    JOEY <span class="text-gradient-brand">FELLIPE</span>
-                </h1>
-                <h2 class="text-lg md:text-2xl text-gray-400 font-light mb-8 max-w-xs md:max-w-none mx-auto">
-                    Analista de E-commerce Orientado a Dados & Criador
-                </h2>
+    <!-- 3. Experiência Profissional -->
+    <section id="experiencia" class="py-24 px-6 bg-white/5">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center reveal">Experiência Profissional Real</h2>
+            <div class="grid gap-6">
                 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6 md:mt-8 w-full max-w-sm sm:max-w-none mx-auto">
-                    <a href="https://www.linkedin.com/in/joeyfellipe" target="_blank" 
-                       class="btn-neon text-white font-bold py-3 md:py-4 px-8 md:px-10 rounded-full text-xs md:text-sm tracking-wide uppercase">
-                        Perfil LinkedIn
-                    </a>
-                    <a href="#case-de-sucesso" 
-                       class="px-8 md:px-10 py-3 md:py-4 rounded-full border border-gray-600 text-white font-bold text-xs md:text-sm hover:bg-white hover:text-black transition-all uppercase">
-                        Ver Case de Sucesso
-                    </a>
-                </div>
-            </div>
-
-            <!-- Scroll Indicator -->
-            <div class="absolute bottom-0 animate-bounce text-gray-600 hidden md:block">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-            </div>
-        </section>
-
-        <!-- SEÇÃO SOBRE -->
-        <section id="sobre" class="mt-16 md:mt-32" data-aos="fade-up">
-            <div class="glass-panel rounded-3xl p-6 md:p-16 text-center md:text-left flex flex-col md:flex-row items-center gap-8 md:gap-12">
-                <div class="flex-1">
-                    <h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-6">Analítico, Criativo e Estratégico</h2>
-                    <p class="text-gray-400 text-base md:text-lg leading-relaxed mb-4 md:mb-6">
-                        Não sou apenas um analista de planilhas. Sou um profissional que entende que por trás de cada dado existe um comportamento humano. 
-                        Combino a precisão da <strong class="text-white">Análise de Dados</strong> com a persuasão do <strong class="text-white">Design Visual</strong>.
-                    </p>
-                    <p class="text-gray-400 text-base md:text-lg leading-relaxed">
-                        Atualmente cursando ADS e focado em transformar operações de e-commerce em máquinas de vendas através de SEO, CRO e Branding.
-                    </p>
-                </div>
-                <!-- Estatísticas Rápidas -->
-                <div class="grid grid-cols-2 gap-3 md:gap-4 w-full md:w-auto">
-                    <div class="bg-white/5 p-4 md:p-6 rounded-2xl text-center border border-white/5">
-                        <span class="block text-2xl md:text-3xl font-bold text-white">+3</span>
-                        <span class="text-[10px] md:text-xs text-gray-500 uppercase">Anos de XP</span>
+                <!-- NK Sign -->
+                <div class="glass-card p-8 reveal">
+                    <div class="flex flex-wrap justify-between items-start mb-4 gap-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Gráfica NK Sign</h3>
+                            <p class="text-indigo-400 font-medium">Designer Gráfico</p>
+                        </div>
+                        <span class="bg-indigo-900/40 text-indigo-300 px-3 py-1 rounded-md text-sm border border-indigo-500/20">Pará</span>
                     </div>
-                    <div class="bg-white/5 p-4 md:p-6 rounded-2xl text-center border border-white/5">
-                        <span class="block text-2xl md:text-3xl font-bold text-white">ADS</span>
-                        <span class="text-[10px] md:text-xs text-gray-500 uppercase">Em Formação</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEÇÃO COMPETÊNCIAS -->
-        <section id="competencias" class="mt-16 md:mt-32">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-16 text-gradient" data-aos="fade-up">Minhas Competências</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                <!-- Card 1 -->
-                <div class="glass-panel rounded-3xl p-6 md:p-10" data-aos="fade-right">
-                    <div class="w-10 h-10 md:w-12 md:h-12 bg-brand-pink/20 rounded-xl flex items-center justify-center mb-4 md:mb-6 text-brand-pink">
-                        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Inteligência de E-commerce</h3>
-                    <ul class="space-y-2 md:space-y-3 text-sm md:text-base text-gray-400">
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-brand-pink rounded-full mr-3"></span>Gestão de Marketplaces (Shopee, ML, Magalu)</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-brand-pink rounded-full mr-3"></span>Análise de KPIs (Margem, Giro, ROI)</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-brand-pink rounded-full mr-3"></span>SEO & CRO para Anúncios</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-brand-pink rounded-full mr-3"></span>Inteligência Competitiva</li>
+                    <ul class="space-y-2 text-gray-400 list-disc list-inside">
+                        <li>Criação de materiais gráficos diversos para impressão.</li>
+                        <li>Atendimento direto ao cliente e captação de briefing.</li>
+                        <li>Trabalho sob demanda com foco em Photoshop e CorelDRAW.</li>
                     </ul>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="glass-panel rounded-3xl p-6 md:p-10" data-aos="fade-left">
-                    <div class="w-10 h-10 md:w-12 md:h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4 md:mb-6 text-blue-400">
-                        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+                <!-- Águia Dourada -->
+                <div class="glass-card p-8 reveal">
+                    <div class="flex flex-wrap justify-between items-start mb-4 gap-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Águia Dourada Modas</h3>
+                            <p class="text-indigo-400 font-medium">Designer Gráfico / E-commerce</p>
+                        </div>
+                        <span class="bg-indigo-900/40 text-indigo-300 px-3 py-1 rounded-md text-sm border border-indigo-500/20">Barueri, SP</span>
                     </div>
-                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Criatividade & Tecnologia</h3>
-                    <ul class="space-y-2 md:space-y-3 text-sm md:text-base text-gray-400">
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Design Gráfico (Photoshop & Corel)</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Edição de Vídeo & Motion</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Estratégia de Redes Sociais</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Lógica de Programação</li>
+                    <ul class="space-y-2 text-gray-400 list-disc list-inside">
+                        <li>Criação e organização visual de produtos para ambiente digital.</li>
+                        <li>Padronização de anúncios e tratamento de imagens profissional.</li>
+                        <li>Apoio visual estratégico em Marketplaces (Mercado Livre, Shopee, Magalu).</li>
                     </ul>
                 </div>
-            </div>
-        </section>
 
-        <!-- SEÇÃO IDIOMAS (Ultra Compacta no Mobile) -->
-        <section id="idiomas" class="mt-12 md:mt-20" data-aos="zoom-in">
-             <div class="glass-panel rounded-2xl p-4 md:p-8 max-w-4xl mx-auto flex flex-row justify-around text-center gap-2 md:gap-8 overflow-x-auto">
-                <div class="min-w-[80px]">
-                    <h4 class="text-gray-500 text-[10px] uppercase tracking-widest mb-1">Nativo</h4>
-                    <p class="text-sm md:text-xl font-bold">Português 🇧🇷</p>
-                </div>
-                <div class="w-px bg-white/10 h-10 self-center"></div>
-                <div class="min-w-[80px]">
-                    <h4 class="text-gray-500 text-[10px] uppercase tracking-widest mb-1">Avançado</h4>
-                    <p class="text-sm md:text-xl font-bold">Inglês 🇺🇸</p>
-                </div>
-                <div class="w-px bg-white/10 h-10 self-center"></div>
-                <div class="min-w-[80px]">
-                    <h4 class="text-gray-500 text-[10px] uppercase tracking-widest mb-1">Avançado</h4>
-                    <p class="text-sm md:text-xl font-bold">Holandês 🇳🇱</p>
-                </div>
-             </div>
-        </section>
-
-        <!-- SEÇÃO CASE DE SUCESSO -->
-        <section id="case-de-sucesso" class="mt-16 md:mt-32">
-            <div class="glass-panel rounded-3xl p-6 md:p-12 relative overflow-hidden" data-aos="fade-up">
-                <!-- Efeito Glow interno -->
-                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-pink/10 blur-3xl rounded-full pointer-events-none"></div>
-
-                <div class="text-center mb-8 md:mb-12 relative z-10">
-                    <span class="text-brand-pink font-bold tracking-widest uppercase text-xs md:text-sm">Relatório de Performance</span>
-                    <h2 class="text-3xl md:text-5xl font-bold mt-2 mb-4 md:mb-6">Case Shopee 2025</h2>
-                    <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
-                        Otimização completa de canal em 7 meses. Estratégia focada em dados resultou na conquista do selo <span class="text-white font-bold">Loja Oficial</span>.
-                    </p>
-                </div>
-
-                <!-- Grid ajustado para mobile (2 colunas para as métricas de números) -->
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-12">
-                    <div class="bg-black/40 rounded-2xl p-4 md:p-6 text-center border border-white/5 hover:border-brand-pink/50 transition-colors">
-                        <span class="block text-3xl md:text-5xl font-black text-brand-pink mb-1 md:mb-2">+187%</span>
-                        <span class="text-gray-400 text-xs md:text-sm">Faturamento</span>
-                    </div>
-                    <div class="bg-black/40 rounded-2xl p-4 md:p-6 text-center border border-white/5 hover:border-brand-pink/50 transition-colors">
-                        <span class="block text-3xl md:text-5xl font-black text-brand-pink mb-1 md:mb-2">+218%</span>
-                        <span class="text-gray-400 text-xs md:text-sm">Volume de Pedidos</span>
-                    </div>
-                    <!-- Card do Selo ocupa 2 colunas no mobile -->
-                    <div class="col-span-2 md:col-span-1 bg-black/40 rounded-2xl p-4 md:p-6 text-center border border-white/5 hover:border-brand-pink/50 transition-colors flex flex-col justify-center items-center">
-                        <svg class="w-8 h-8 md:w-10 md:h-10 text-brand-pink mb-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                        <span class="text-gray-400 text-xs md:text-sm">Selo Shopee Oficial</span>
-                    </div>
-                </div>
-
-                <div class="w-full h-[250px] md:h-[400px]">
-                    <canvas id="ordersChart"></canvas>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEÇÃO EXPERIÊNCIA (Timeline Expandida e Enriquecida) -->
-        <section id="experiencia" class="mt-16 md:mt-32">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-16 px-4" data-aos="fade-right">Trajetória Profissional</h2>
-            
-            <div class="space-y-6 md:space-y-8 relative border-l border-gray-800 ml-4 md:ml-10">
-                
-                <!-- Item 1: Supercol -->
-                <div class="relative pl-6 md:pl-12" data-aos="fade-up" data-aos-delay="100">
-                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-pink shadow-[0_0_10px_#ED0747]"></div>
-                    <div class="glass-panel p-5 md:p-6 rounded-2xl">
-                        <div class="flex flex-col md:flex-row justify-between mb-2">
-                            <h3 class="text-lg md:text-xl font-bold text-white">Analista de Canal (E-commerce)</h3>
-                            <span class="text-brand-pink font-mono text-xs md:text-sm">2025 - Presente</span>
+                <!-- UZ Importadora -->
+                <div class="glass-card p-8 reveal">
+                    <div class="flex flex-wrap justify-between items-start mb-4 gap-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">UZ Importadora / Beltempo</h3>
+                            <p class="text-indigo-400 font-medium">Analista de E-commerce</p>
                         </div>
-                        <p class="text-gray-500 text-xs md:text-sm mb-4">Supercol | Capivari, SP</p>
-                        <ul class="text-gray-400 text-sm md:text-base space-y-2 list-disc pl-5">
-                            <li>Gestão estratégica de portfólio e análise profunda de KPIs (Vendas, Margem, Giro).</li>
-                            <li>Implementação de estratégias de conversão (CRO) e monitoramento de concorrência.</li>
-                            <li>Foco em desafios, aprendizados constantes e inovação em processos comerciais.</li>
-                        </ul>
+                        <span class="bg-indigo-900/40 text-indigo-300 px-3 py-1 rounded-md text-sm border border-indigo-500/20">Capivari, SP</span>
                     </div>
-                </div>
-
-                <!-- Item 2: Aguia Dourada -->
-                <div class="relative pl-6 md:pl-12" data-aos="fade-up" data-aos-delay="200">
-                    <div class="absolute -left-[5px] top-2 w-2 h-2 rounded-full bg-gray-600"></div>
-                    <div class="glass-panel p-5 md:p-6 rounded-2xl opacity-90 hover:opacity-100">
-                        <div class="flex flex-col md:flex-row justify-between mb-2">
-                            <h3 class="text-lg md:text-xl font-bold text-white">Designer Gráfico & E-Commerce</h3>
-                            <span class="text-gray-500 font-mono text-xs md:text-sm">2024</span>
-                        </div>
-                        <p class="text-gray-500 text-xs md:text-sm mb-4">Aguia Dourada Modas | Barueri, SP</p>
-                        <ul class="text-gray-400 text-sm md:text-base space-y-2 list-disc pl-5">
-                            <li>Gestão de catálogo e postagem de produtos no <strong>Mercado Livre, Shein e Magalu</strong>.</li>
-                            <li>Criação de materiais visuais de alta conversão para anúncios.</li>
-                            <li>Responsável pela organização logística, embalagem e expedição de encomendas com controle de qualidade.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                 <!-- Item 3: Gráfica NK -->
-                 <div class="relative pl-6 md:pl-12" data-aos="fade-up" data-aos-delay="300">
-                    <div class="absolute -left-[5px] top-2 w-2 h-2 rounded-full bg-gray-600"></div>
-                    <div class="glass-panel p-5 md:p-6 rounded-2xl opacity-70 hover:opacity-100">
-                        <div class="flex flex-col md:flex-row justify-between mb-2">
-                            <h3 class="text-base md:text-lg font-bold text-white">Designer Gráfico</h3>
-                            <span class="text-gray-500 font-mono text-xs md:text-sm">2023</span>
-                        </div>
-                        <p class="text-gray-500 text-xs md:text-sm mb-4">Gráfica NK Sign | Belém, PA</p>
-                        <ul class="text-gray-400 text-sm md:text-base space-y-2 list-disc pl-5">
-                            <li>Criação de peças gráficas com domínio avançado de <strong>Photoshop & CorelDraw</strong>.</li>
-                            <li>Atendimento personalizado ao cliente com foco em entrega rápida (Gráfica Rápida).</li>
-                            <li>Garantia de alta qualidade técnica na finalização de arquivos para impressão.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Item 4: Cyber do Alan (Novo!) -->
-                <div class="relative pl-6 md:pl-12" data-aos="fade-up" data-aos-delay="400">
-                    <div class="absolute -left-[5px] top-2 w-2 h-2 rounded-full bg-gray-600"></div>
-                    <div class="glass-panel p-5 md:p-6 rounded-2xl opacity-50 hover:opacity-100">
-                        <div class="flex flex-col md:flex-row justify-between mb-2">
-                            <h3 class="text-base md:text-lg font-bold text-white">Assistente Administrativo</h3>
-                            <span class="text-gray-500 font-mono text-xs md:text-sm">2020 - 2022</span>
-                        </div>
-                        <p class="text-gray-500 text-xs md:text-sm mb-4">Cyber do Alan | Belém, PA</p>
-                        <ul class="text-gray-400 text-sm md:text-base space-y-2 list-disc pl-5">
-                            <li>Atendimento ao público focado em serviços digitais (consultas, cadastros, documentos).</li>
-                            <li>Agilidade e precisão na resolução de demandas administrativas e navegação online.</li>
-                            <li>Gestão de pagamentos e organização de processos internos.</li>
-                        </ul>
-                    </div>
+                    <ul class="space-y-2 text-gray-400 list-disc list-inside">
+                        <li>Análise visual de anúncios focada em conversão.</li>
+                        <li>Design estratégico para apresentação de novos produtos.</li>
+                        <li>Suporte em branding e identidade visual corporativa.</li>
+                    </ul>
                 </div>
 
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- SEÇÃO FORMAÇÃO -->
-        <section id="formacao" class="mt-16 md:mt-32">
-             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6" data-aos="fade-up">
-                <div class="glass-panel p-6 md:p-8 rounded-2xl border-l-4 border-brand-pink">
-                    <span class="text-2xl md:text-3xl mb-3 block">🎓</span>
-                    <h3 class="text-lg md:text-xl font-bold text-white">Análise e Desenvolvimento de Sistemas</h3>
-                    <p class="text-gray-400 text-sm md:text-base mt-1">Instituto Federal de São Paulo (IFSP)</p>
-                    <p class="text-brand-pink text-xs md:text-sm mt-2">2025 – 2027 (Cursando)</p>
+    <!-- 4. Competências -->
+    <section id="competencias" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-12 reveal">Competências e Ferramentas</h2>
+            <div class="flex flex-wrap justify-center gap-4 reveal">
+                <div class="skill-badge">Design Gráfico</div>
+                <div class="skill-badge">Photoshop</div>
+                <div class="skill-badge">CorelDRAW</div>
+                <div class="skill-badge">Comunicação Visual</div>
+                <div class="skill-badge">E-commerce</div>
+                <div class="skill-badge">Criação para Impressão</div>
+                <div class="skill-badge">Organização Visual</div>
+                <div class="skill-badge">Noções de UX/UI</div>
+                <div class="skill-badge">HTML / CSS (Básico)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Diferencial -->
+    <section class="py-24 px-6 bg-indigo-950/20">
+        <div class="max-w-5xl mx-auto">
+            <div class="glass-card p-10 reveal">
+                <h2 class="text-3xl font-bold mb-8">Por que trabalhar comigo?</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-indigo-400 font-bold mb-2">Visão Integrada</h4>
+                        <p class="text-gray-400">Consigo unir os pontos entre Design, Negócio e Tecnologia, garantindo que o visual suporte os objetivos comerciais.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-indigo-400 font-bold mb-2">Aprendizado Acelerado</h4>
+                        <p class="text-gray-400">Estudante de ADS com facilidade nata para novas ferramentas e integração com fluxos de tecnologia.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-indigo-400 font-bold mb-2">Comunicação Clara</h4>
+                        <p class="text-gray-400">Experiência direta com atendimento ao cliente, garantindo que o projeto atenda exatamente o que foi solicitado.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-indigo-400 font-bold mb-2">Prática de Campo</h4>
+                        <p class="text-gray-400">Experiência real em gráficas e e-commerce de grande volume, sabendo lidar com prazos e limitações técnicas.</p>
+                    </div>
                 </div>
-                <div class="glass-panel p-6 md:p-8 rounded-2xl border-l-4 border-gray-700">
-                    <span class="text-2xl md:text-3xl mb-3 block">📚</span>
-                    <h3 class="text-lg md:text-xl font-bold text-white">Ensino Médio</h3>
-                    <p class="text-gray-400 text-sm md:text-base mt-1">E. E. República do Equador</p>
-                    <p class="text-gray-500 text-xs md:text-sm mt-2">Concluído em 2024</p>
-                </div>
-             </div>
-        </section>
+            </div>
+        </div>
+    </section>
 
-        <!-- FOOTER -->
-        <footer id="contato" class="mt-16 md:mt-32 border-t border-white/10 pt-12 md:pt-20 pb-8 md:pb-10 text-center">
-            <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6" data-aos="zoom-in">Vamos Trabalhar Juntos?</h2>
-            <p class="text-gray-400 mb-8 md:mb-10 text-base md:text-lg">Pronto para elevar o nível do seu projeto?</p>
-            
-            <a href="https://wa.me/5511962652362" target="_blank" class="btn-neon inline-block text-white font-bold py-3 md:py-4 px-10 md:px-12 rounded-full text-sm md:text-lg mb-10 md:mb-16 uppercase">
-                Chamar no WhatsApp
-            </a>
+    <!-- 6. Contato -->
+    <footer id="contato" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-bold mb-4">Vamos conversar?</h2>
+                <p class="text-gray-400">Entre em contato diretamente pelos canais abaixo:</p>
+            </div>
 
-            <div class="flex justify-center gap-6 md:gap-8 mb-8 md:mb-12">
-                <a href="https://www.linkedin.com/in/joeyfellipe" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110">
-                    <svg class="w-6 h-6 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <div class="grid md:grid-cols-3 gap-8 reveal">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/5511962652362" target="_blank" class="glass-card p-8 text-center block group hover:border-indigo-500/50">
+                    <div class="bg-indigo-600/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-indigo-400 group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <h4 class="font-bold text-lg mb-1">WhatsApp</h4>
+                    <p class="text-gray-400 font-medium">11 96265-2362</p>
                 </a>
-                <a href="mailto:joeyfellipe07@gmail.com" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110">
-                    <svg class="w-6 h-6 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+
+                <!-- E-mail -->
+                <a href="mailto:joeyfellipe07@gmail.com" class="glass-card p-8 text-center block group hover:border-indigo-500/50">
+                    <div class="bg-indigo-600/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-indigo-400 group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </div>
+                    <h4 class="font-bold text-lg mb-1">E-mail</h4>
+                    <p class="text-gray-400 font-medium truncate">joeyfellipe07@gmail.com</p>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com/in/joeyfellipe" target="_blank" class="glass-card p-8 text-center block group hover:border-indigo-500/50">
+                    <div class="bg-indigo-600/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-indigo-400 group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                    </div>
+                    <h4 class="font-bold text-lg mb-1">LinkedIn</h4>
+                    <p class="text-gray-400 font-medium">/joeyfellipe</p>
                 </a>
             </div>
 
-            <p class="text-gray-600 text-xs md:text-sm">
-                &copy; 2025 Joey Fellipe. Desenvolvido com Paixão.
-            </p>
-        </footer>
-
-    </main>
+            <div class="mt-24 pt-8 border-t border-white/5 text-center text-gray-500 text-sm reveal">
+                <p class="font-semibold text-gray-400">Localização atual: Capivari / São Paulo</p>
+                <p class="mt-2">&copy; 2024 Joey Fellipe Kartowidjojo. Portfólio Profissional.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Inicializar AOS (Animate On Scroll)
-        AOS.init({
-            once: true,
-            offset: 50, // Menor offset para mobile
-            duration: 800,
-            easing: 'ease-out-cubic',
-        });
-
-        // Script Menu Mobile
-        const menuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        if (menuButton && mobileMenu) {
-            menuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-            mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-            });
-        }
-
-        // Script do Gráfico (Chart.js Style)
-        const ctx = document.getElementById('ordersChart');
-        if (ctx) {
-            // Criar gradiente para o gráfico
-            const gradientCtx = ctx.getContext('2d');
-            const gradient = gradientCtx.createLinearGradient(0, 0, 0, 400);
-            gradient.addColorStop(0, 'rgba(237, 7, 71, 0.5)'); // Rosa forte no topo
-            gradient.addColorStop(1, 'rgba(237, 7, 71, 0)');   // Transparente embaixo
-
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out'],
-                    datasets: [{
-                        label: 'Pedidos',
-                        data: [533, 379, 509, 718, 1262, 1631, 1695],
-                        borderColor: '#ED0747',
-                        backgroundColor: gradient,
-                        borderWidth: 3,
-                        pointBackgroundColor: '#000',
-                        pointBorderColor: '#ED0747',
-                        pointBorderWidth: 2,
-                        pointRadius: 6,
-                        pointHoverRadius: 8,
-                        tension: 0.4, // Curva mais suave
-                        fill: true
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            backgroundColor: 'rgba(0,0,0,0.8)',
-                            titleColor: '#fff',
-                            bodyColor: '#ED0747',
-                            borderColor: 'rgba(255,255,255,0.1)',
-                            borderWidth: 1,
-                            padding: 12,
-                            displayColors: false,
-                            titleFont: { size: 14 },
-                            bodyFont: { size: 16, weight: 'bold' }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                            ticks: { color: '#666', font: { family: 'Inter' } },
-                            border: { display: false }
-                        },
-                        x: {
-                            grid: { display: false },
-                            ticks: { color: '#666', font: { family: 'Inter' } },
-                            border: { display: false }
-                        }
-                    }
+        // Reveal on scroll logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
                 }
-            });
+            }
         }
+
+        window.addEventListener("scroll", reveal);
+        window.onload = reveal;
+
+        // Subtle parallax movement for background blobs
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) - 0.5;
+            const y = (e.clientY / window.innerHeight) - 0.5;
+            
+            const blobs = document.querySelectorAll('.blob');
+            blobs.forEach((blob, index) => {
+                const speed = (index + 1) * 30;
+                blob.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
     </script>
 </body>
 </html>
