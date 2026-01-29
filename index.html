@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joey Fellipe | Design & E-commerce</title>
+    <title>Joey Fellipe | Design & Tech</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -16,7 +16,7 @@
             overflow-x: hidden;
         }
 
-        /* Background Gradients */
+        /* Fundo Dinâmico */
         .bg-gradient-radial {
             background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, #050505 70%);
             position: fixed;
@@ -29,45 +29,38 @@
 
         .blob {
             position: fixed;
-            width: 400px;
-            height: 400px;
+            width: 600px;
+            height: 600px;
             background: linear-gradient(135deg, #3730a3 0%, #4338ca 100%);
-            filter: blur(80px);
+            filter: blur(120px);
             border-radius: 50%;
-            opacity: 0.15;
+            opacity: 0.1;
             z-index: -1;
-            animation: move 20s infinite alternate;
+            animation: move 30s infinite alternate;
         }
 
         @keyframes move {
-            from { transform: translate(-10%, -10%); }
-            to { transform: translate(20%, 30%); }
+            from { transform: translate(-20%, -20%) scale(1); }
+            to { transform: translate(30%, 40%) scale(1.1); }
         }
 
-        /* Glassmorphism Classes */
+        /* Glassmorphism */
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 2rem;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .glass-nav {
-            background: rgba(5, 5, 5, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(5, 5, 5, 0.7);
+            backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Animations */
+        /* Reveal no Scroll */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -79,31 +72,26 @@
             transform: translateY(0);
         }
 
-        .skill-badge {
-            background: rgba(255, 255, 255, 0.05);
+        /* Bento Item General */
+        .bento-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: background 0.2s;
+            cursor: zoom-in;
+            background: #111;
+            transition: all 0.4s ease;
         }
 
-        .skill-badge:hover {
-            background: rgba(255, 255, 255, 0.15);
+        .bento-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
-        }
-
-        .btn-primary:hover {
+        .bento-item:hover img {
             transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
         }
 
         /* Modal Zoom */
@@ -111,284 +99,240 @@
             display: none;
             position: fixed;
             inset: 0;
-            z-index: 100;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 2rem;
             cursor: zoom-out;
         }
 
-        #zoom-modal.active {
-            display: flex;
-        }
+        #zoom-modal.active { display: flex; }
 
         #zoom-modal img {
-            max-width: 95%;
+            max-width: 90%;
             max-height: 90vh;
-            border-radius: 0.5rem;
+            border-radius: 1rem;
             box-shadow: 0 0 50px rgba(0,0,0,0.5);
-            cursor: default;
         }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #1e1b4b; border-radius: 10px; }
     </style>
 </head>
 <body>
 
     <div class="bg-gradient-radial"></div>
-    <div class="blob" style="top: 10%; left: 10%;"></div>
-    <div class="blob" style="bottom: 10%; right: 10%; animation-delay: -5s; background: #312e81;"></div>
+    <div class="blob" style="top: 10%; left: 5%;"></div>
+    <div class="blob" style="bottom: 5%; right: 5%; animation-delay: -10s; background: #312e81;"></div>
 
     <!-- Navegação -->
-    <nav class="fixed top-0 w-full z-50 glass-nav">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <span class="font-bold tracking-tight text-xl">Joey<span class="text-indigo-400">.</span></span>
-            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+    <nav class="fixed top-0 w-full z-[100] glass-nav">
+        <div class="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
+            <span class="font-bold tracking-tighter text-2xl uppercase">Joey<span class="text-indigo-500">.</span></span>
+            <div class="hidden md:flex gap-12 text-[11px] uppercase tracking-[0.3em] font-bold text-gray-500">
                 <a href="#home" class="hover:text-white transition-colors">Início</a>
                 <a href="#sobre" class="hover:text-white transition-colors">Sobre</a>
-                <a href="#experiencia" class="hover:text-white transition-colors">Experiência</a>
                 <a href="#portfolio" class="hover:text-white transition-colors">Portfólio</a>
                 <a href="#contato" class="hover:text-white transition-colors">Contato</a>
             </div>
-            <a href="https://wa.me/5511962652362" target="_blank" class="bg-indigo-600 hover:bg-indigo-500 px-5 py-2 rounded-full text-sm font-semibold transition-all">WhatsApp</a>
+            <a href="https://wa.me/5511962652362" target="_blank" class="border border-white/20 px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all">WhatsApp</a>
         </div>
     </nav>
 
     <!-- 1. Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center px-6 pt-20">
-        <div class="max-w-4xl w-full text-center">
-            <h2 class="text-indigo-400 font-semibold tracking-widest uppercase text-sm mb-4 reveal">Designer Gráfico | Comunicação Visual</h2>
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight reveal">Joey Fellipe <br><span class="text-gray-400">Kartowidjojo</span></h1>
-            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto reveal">Design aplicado a negócios e soluções reais. Foco em resultados através da comunicação visual estratégica e e-commerce.</p>
-            <div class="flex flex-wrap justify-center gap-4 reveal">
-                <a href="#contato" class="btn-primary text-white px-8 py-3 rounded-full font-bold">Falar Comigo</a>
-                <a href="#portfolio" class="glass-card px-8 py-3 rounded-full font-bold hover:bg-white/10 transition-all">Ver Projetos</a>
+    <section id="home" class="min-h-screen flex items-center justify-center px-8 pt-24">
+        <div class="max-w-6xl w-full text-center">
+            <div class="reveal mb-8">
+                <span class="text-indigo-400 text-xs font-bold uppercase tracking-[0.4em]">Designer Gráfico | E-commerce</span>
+            </div>
+            <h1 class="text-5xl md:text-8xl font-black mb-8 tracking-tighter reveal leading-tight">
+                JOEY FELLIPE <br>KARTOWIDJOJO
+            </h1>
+            <p class="text-lg md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto reveal leading-relaxed font-light">
+                Criando conexões visuais entre o mundo físico e digital através de design estratégico e tecnologia aplicada.
+            </p>
+            <div class="flex justify-center gap-8 reveal">
+                <a href="#portfolio" class="bg-indigo-600 text-white px-10 py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-indigo-500 transition-all">Ver Trabalhos</a>
             </div>
         </div>
     </section>
 
     <!-- 2. Sobre Mim -->
-    <section id="sobre" class="py-24 px-6">
-        <div class="max-w-5xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="reveal">
-                    <h2 class="text-3xl font-bold mb-6">Sobre Mim</h2>
-                    <div class="space-y-4 text-gray-400 leading-relaxed text-lg">
-                        <p>
-                            Sou um designer gráfico com sólida experiência prática, tendo atuado em diversos nichos da comunicação visual, desde gráficas rápidas até operações complexas de e-commerce.
-                        </p>
-                        <p>
-                            Atualmente, sou estudante de <strong>Análise e Desenvolvimento de Sistemas (IFSP)</strong>, o que me permite unir a estética visual à funcionalidade tecnológica. Meu perfil é versátil, adaptável e focado em resolver problemas reais através do design.
-                        </p>
-                    </div>
-                </div>
-                <div class="reveal">
-                    <div class="glass-card p-8 border-indigo-500/20 relative">
-                        <h3 class="text-xl font-semibold mb-4 text-white">Abordagem Profissional</h3>
-                        <ul class="space-y-4">
-                            <li class="flex gap-3 text-gray-400">
-                                <span class="text-indigo-400 font-bold">●</span>
-                                <span>Foco em conversão e resultados de negócio.</span>
-                            </li>
-                            <li class="flex gap-3 text-gray-400">
-                                <span class="text-indigo-400 font-bold">●</span>
-                                <span>Domínio de processos produtivos (Impressão/Digital).</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. Experiência Profissional -->
-    <section id="experiencia" class="py-24 px-6 bg-white/5">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-3xl font-bold mb-12 text-center reveal">Trajetória Profissional</h2>
-            <div class="grid gap-6">
-                <div class="glass-card p-8 reveal">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Gráfica NK Sign</h3>
-                            <p class="text-indigo-400">Designer Gráfico | Pará</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-400">Criação de materiais para impressão, atendimento direto ao cliente e operação sob prazos rigorosos.</p>
-                </div>
-
-                <div class="glass-card p-8 reveal">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Águia Dourada Modas</h3>
-                            <p class="text-indigo-400">Designer / E-commerce | Barueri, SP</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-400">Organização visual de produtos, padronização de anúncios e suporte em marketplaces (Shopee, ML).</p>
-                </div>
-
-                <div class="glass-card p-8 reveal">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-xl font-bold text-white">UZ Importadora / Beltempo</h3>
-                            <p class="text-indigo-400">Analista de E-commerce | Capivari, SP</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-400">Análise de conversão visual, branding e apresentação estratégica de mix de produtos.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO: Portfólio Visual / Prova Social -->
-    <section id="portfolio" class="py-24 px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-12 reveal">
-                <h2 class="text-3xl font-bold mb-4">Portfólio & Prova Social</h2>
-                <p class="text-gray-400">Casos reais e aplicações de design focado em resultados.</p>
-            </div>
-
-            <!-- Projeto Arena do Timão -->
-            <div class="glass-card p-8 mb-12 reveal">
-                <div class="flex flex-col md:flex-row gap-8 items-center mb-8">
-                    <div class="md:w-1/2">
-                        <h3 class="text-2xl font-bold mb-4 text-white">Arena do Timão</h3>
-                        <p class="text-gray-400 mb-6 text-lg leading-relaxed">
-                            Gestão de identidade visual e criação de conteúdos para o perfil <strong>@arenadotimão</strong>. Projeto 100% digital focado em comunicação de notícias, resultados e cobertura de eventos esportivos com alta taxa de engajamento.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="skill-badge text-xs">Design Digital</span>
-                            <span class="skill-badge text-xs">Social Media</span>
-                            <span class="skill-badge text-xs">Futebol & Notícias</span>
-                            <span class="skill-badge text-xs">Engajamento</span>
-                        </div>
-                        <p class="text-xs text-indigo-400/60 flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                            Clique nas imagens para ampliar
-                        </p>
-                    </div>
-                    <div class="md:w-1/2 grid grid-cols-3 gap-2">
-                        <img src="https://i.imgur.com/cjQjeRN.png" alt="[Post Arena do Timão]" class="rounded-lg w-full aspect-square object-cover hover:scale-105 transition-transform cursor-zoom-in" onclick="zoomImage(this.src)">
-                        <img src="https://i.imgur.com/vTIHEqx.png" alt="[Post Arena do Timão]" class="rounded-lg w-full aspect-square object-cover hover:scale-105 transition-transform cursor-zoom-in" onclick="zoomImage(this.src)">
-                        <img src="https://i.imgur.com/zVpD1kU.png" alt="[Post Arena do Timão]" class="rounded-lg w-full aspect-square object-cover hover:scale-105 transition-transform cursor-zoom-in" onclick="zoomImage(this.src)">
-                        <img src="https://i.imgur.com/q24So0I.png" alt="[Post Arena do Timão]" class="rounded-lg w-full aspect-square object-cover hover:scale-105 transition-transform cursor-zoom-in" onclick="zoomImage(this.src)">
-                        <img src="https://i.imgur.com/Hc3Du5v.png" alt="[Post Arena do Timão]" class="rounded-lg w-full aspect-square object-cover hover:scale-105 transition-transform cursor-zoom-in" onclick="zoomImage(this.src)">
-                        <img src="https://i.imgur.com/omV7sUU.png" alt="[Post Arena do Timão]" class="rounded-lg w-full aspect-square object-cover hover:scale-105 transition-transform cursor-zoom-in" onclick="zoomImage(this.src)">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Diferencial Técnico -->
-            <div class="grid md:grid-cols-2 gap-8 reveal">
-                <div class="glass-card p-8 flex flex-col justify-center">
-                    <h3 class="text-2xl font-bold mb-4 text-indigo-400">Do Digital ao Físico</h3>
-                    <p class="text-gray-400">
-                        Minha experiência em ambientes de produção real (gráficas e importadoras) me permite transitar entre o design de tela e a produção material com precisão técnica.
+    <section id="sobre" class="py-32 px-8">
+        <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+            <div class="reveal">
+                <h2 class="text-4xl font-bold mb-10 leading-tight italic">Design com <span class="text-indigo-500">propósito.</span></h2>
+                <div class="space-y-6 text-gray-400 text-lg leading-relaxed font-light">
+                    <p>
+                        Minha atuação na Comunicação Visual ensinou-me a lidar com a realidade tangível: o toque do acrílico, a fidelidade da cor na camisa e a precisão do corte.
+                    </p>
+                    <p>
+                        Hoje, levo esse rigor para o mundo do E-commerce e Tecnologia (ADS), onde cada elemento visual é planejado para converter, engajar e facilitar a jornada do usuário.
                     </p>
                 </div>
-                <div class="glass-card p-8">
-                    <ul class="space-y-4">
-                        <li class="flex items-center gap-3 text-sm text-gray-300">
-                            <svg class="text-indigo-500 shrink-0" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Fechamento de arquivo para Acrílico e Impressão
-                        </li>
-                        <li class="flex items-center gap-3 text-sm text-gray-300">
-                            <svg class="text-indigo-500 shrink-0" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Processos de Sublimação e Silk em vestuário
-                        </li>
-                        <li class="flex items-center gap-3 text-sm text-gray-300">
-                            <svg class="text-indigo-500 shrink-0" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Otimização visual de anúncios para E-commerce
-                        </li>
-                    </ul>
+            </div>
+            <div class="reveal">
+                <div class="glass-card p-10 border-indigo-500/10">
+                    <h4 class="text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] mb-6">Core Skills</h4>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-sm font-medium border-b border-white/10 pb-2">Photoshop CC</div>
+                        <div class="text-sm font-medium border-b border-white/10 pb-2">CorelDRAW</div>
+                        <div class="text-sm font-medium border-b border-white/10 pb-2">E-commerce ADS</div>
+                        <div class="text-sm font-medium border-b border-white/10 pb-2">Software Dev</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Competências -->
-    <section id="competencias" class="py-24 px-6 bg-white/5">
-        <div class="max-w-5xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-12 reveal">Competências Técnica</h2>
-            <div class="flex flex-wrap justify-center gap-4 reveal">
-                <div class="skill-badge">Photoshop</div>
-                <div class="skill-badge">CorelDRAW</div>
-                <div class="skill-badge">Criação para Impressão</div>
-                <div class="skill-badge">E-commerce</div>
-                <div class="skill-badge">Análise de ADS</div>
-                <div class="skill-badge">HTML / CSS (Básico)</div>
+    <!-- 3. Portfólio: NK SIGN (Físico) -->
+    <section id="portfolio" class="py-32 px-8 bg-white/[0.01]">
+        <div class="max-w-7xl mx-auto">
+            <div class="reveal mb-16">
+                <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-4">PRODUÇÃO FÍSICA</h2>
+                <p class="text-gray-500 text-xl font-light italic">NK Sign • 2023</p>
+            </div>
+
+            <div class="grid grid-cols-12 gap-4 reveal">
+                <div class="bento-item col-span-12 md:col-span-8 h-[500px]" onclick="zoomImage(this.querySelector('img').src)">
+                    <img src="https://i.imgur.com/EHi3arO.png" alt="[Corte Acrílico]">
+                </div>
+                <div class="bento-item col-span-12 md:col-span-4 h-[500px]" onclick="zoomImage(this.querySelector('img').src)">
+                    <img src="https://i.imgur.com/C3dgoJa.png" alt="[Sinalização]">
+                </div>
+                <div class="bento-item col-span-6 md:col-span-3 aspect-square" onclick="zoomImage(this.querySelector('img').src)">
+                    <img src="https://i.imgur.com/E8qVpb9.png" alt="[Têxtil]">
+                </div>
+                <div class="bento-item col-span-6 md:col-span-3 aspect-square" onclick="zoomImage(this.querySelector('img').src)">
+                    <img src="https://i.imgur.com/CgeGQF4.png" alt="[Impressão]">
+                </div>
+                <div class="bento-item col-span-6 md:col-span-3 aspect-square" onclick="zoomImage(this.querySelector('img').src)">
+                    <img src="https://i.imgur.com/0ORhktQ.png" alt="[Branding]">
+                </div>
+                <div class="bento-item col-span-6 md:col-span-3 aspect-square" onclick="zoomImage(this.querySelector('img').src)">
+                    <img src="https://i.imgur.com/QO3FMIc.png" alt="[Acrílico]">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contato -->
-    <footer id="contato" class="py-24 px-6">
-        <div class="max-w-5xl mx-auto">
-            <div class="grid md:grid-cols-3 gap-8 reveal">
-                <a href="https://wa.me/5511962652362" target="_blank" class="glass-card p-8 text-center block group hover:border-indigo-500/50">
-                    <h4 class="font-bold text-lg mb-1">WhatsApp</h4>
-                    <p class="text-gray-400 font-medium">11 96265-2362</p>
+    <!-- 4. Portfólio: ARENA DO TIMÃO (Quadrado / Posts) -->
+    <section class="py-32 px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="reveal mb-16 text-right">
+                <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-4 uppercase">Arena do Timão</h2>
+                <p class="text-gray-500 text-xl font-light italic">Comunicação Digital • Até 2023</p>
+            </div>
+
+            <!-- Grid de Posts Quadrados -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 reveal max-w-5xl mx-auto">
+                <div class="bento-item aspect-square group" onclick="zoomImage(this.querySelector('img').src)">
+                    <img src="https://i.imgur.com/cjQjeRN.png" alt="[Post Arena]">
+                </div>
+                <div class="bento-item aspect-square group" onclick="zoomImage(this.querySelector('img').src)">
+                    <img src="https://i.imgur.com/vTIHEqx.png" alt="[Post Arena]">
+                </div>
+                <div class="bento-item aspect-square group" onclick="zoomImage(this.querySelector('img').src)">
+                    <img src="https://i.imgur.com/zVpD1kU.png" alt="[Post Arena]">
+                </div>
+                <div class="bento-item aspect-square group" onclick="zoomImage(this.querySelector('img').src)">
+                    <img src="https://i.imgur.com/q24So0I.png" alt="[Post Arena]">
+                </div>
+                <div class="bento-item aspect-square group" onclick="zoomImage(this.querySelector('img').src)">
+                    <img src="https://i.imgur.com/Hc3Du5v.png" alt="[Post Arena]">
+                </div>
+                <div class="bento-item aspect-square group" onclick="zoomImage(this.querySelector('img').src)">
+                    <img src="https://i.imgur.com/omV7sUU.png" alt="[Post Arena]">
+                </div>
+            </div>
+            
+            <div class="mt-16 reveal max-w-2xl">
+                <h3 class="text-2xl font-bold mb-4 text-indigo-400 uppercase italic tracking-wider">Feed Estratégico</h3>
+                <p class="text-gray-400 text-lg font-light leading-relaxed">
+                    Desenvolvimento de um sistema visual ágil para cobertura de notícias e resultados esportivos, mantendo a autoridade visual do perfil através de layouts consistentes.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contato -->
+    <footer id="contato" class="py-32 px-8 text-center border-t border-white/5">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-black mb-16 tracking-tighter uppercase">VAMOS CRIAR?</h2>
+            
+            <div class="flex flex-wrap justify-center gap-12 reveal">
+                <a href="https://wa.me/5511962652362" target="_blank" class="group">
+                    <span class="text-gray-500 block text-[10px] uppercase tracking-widest mb-2">WhatsApp</span>
+                    <span class="text-xl font-bold">11 96265-2362</span>
                 </a>
-                <a href="mailto:joeyfellipe07@gmail.com" class="glass-card p-8 text-center block group hover:border-indigo-500/50">
-                    <h4 class="font-bold text-lg mb-1">E-mail</h4>
-                    <p class="text-gray-400 font-medium truncate">joeyfellipe07@gmail.com</p>
+                <a href="mailto:joeyfellipe07@gmail.com" class="group">
+                    <span class="text-gray-500 block text-[10px] uppercase tracking-widest mb-2">Email</span>
+                    <span class="text-xl font-bold">joeyfellipe07@gmail.com</span>
                 </a>
-                <a href="https://linkedin.com/in/joeyfellipe" target="_blank" class="glass-card p-8 text-center block group hover:border-indigo-500/50">
-                    <h4 class="font-bold text-lg mb-1">LinkedIn</h4>
-                    <p class="text-gray-400 font-medium">/joeyfellipe</p>
+                <a href="https://linkedin.com/in/joeyfellipe" target="_blank" class="group">
+                    <span class="text-gray-500 block text-[10px] uppercase tracking-widest mb-2">LinkedIn</span>
+                    <span class="text-xl font-bold">/joeyfellipe</span>
                 </a>
             </div>
-            <div class="mt-20 pt-8 border-t border-white/5 text-center text-gray-500 text-sm reveal">
-                <p>Capivari / São Paulo</p>
-                <p class="mt-2">&copy; 2024 Joey Fellipe Kartowidjojo.</p>
+
+            <div class="mt-32 text-gray-700 text-[10px] font-black uppercase tracking-[0.5em]">
+                Joey Fellipe Kartowidjojo • Capivari/SP • ©2024
             </div>
         </div>
     </footer>
 
-    <!-- Modal para Zoom -->
+    <!-- Zoom Overlay -->
     <div id="zoom-modal" onclick="closeZoom()">
-        <img id="modal-img" src="" alt="Zoom Image">
+        <img id="modal-img" src="" alt="Ampliação do Trabalho">
     </div>
 
     <script>
-        // Lógica de Reveal no Scroll
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        window.onload = reveal;
-
-        // Efeito Parallax suave nos fundos
-        document.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth) - 0.5;
-            const y = (e.clientY / window.innerHeight) - 0.5;
-            const blobs = document.querySelectorAll('.blob');
-            blobs.forEach((blob, index) => {
-                const speed = (index + 1) * 30;
-                blob.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+        // Reveal Logic
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
-        });
+        }, observerOptions);
 
-        // Funções de Zoom
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Zoom Modal
         function zoomImage(src) {
             const modal = document.getElementById('zoom-modal');
-            const modalImg = document.getElementById('modal-img');
-            modalImg.src = src;
+            const img = document.getElementById('modal-img');
+            img.src = src;
             modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Bloqueia scroll ao abrir
+            document.body.style.overflow = 'hidden';
         }
 
         function closeZoom() {
-            const modal = document.getElementById('zoom-modal');
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Restaura scroll ao fechar
+            document.getElementById('zoom-modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
+
+        // Tilt Effect
+        const cards = document.querySelectorAll('.bento-item, .glass-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                if (window.innerWidth < 1024) return;
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const xc = rect.width / 2;
+                const yc = rect.height / 2;
+                const dx = x - xc;
+                const dy = y - yc;
+                card.style.transform = `perspective(1000px) rotateX(${-dy/40}deg) rotateY(${dx/40}deg) translateY(-5px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)`;
+            });
+        });
     </script>
 </body>
 </html>
