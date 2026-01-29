@@ -213,7 +213,7 @@
         </div>
     </section>
 
-    <!-- NOVA SEÇÃO: Portfólio Visual / Prova Social -->
+    <!-- SEÇÃO: Portfólio Visual / Prova Social -->
     <section id="portfolio" class="py-24 px-6">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-12 reveal">
@@ -222,24 +222,32 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 items-stretch">
-                <!-- Imagem Enviada -->
+                <!-- Card do Projeto Arena do Timão -->
                 <div class="glass-card overflow-hidden flex flex-col reveal">
-                    <div class="relative group">
+                    <div class="relative group aspect-video">
+                        <!-- Imagem do Projeto -->
                         <img 
+                            id="project-image"
                             src="https://scontent-gru2-1.cdninstagram.com/v/t51.29350-15/397536010_725015515703195_3333691723239060221_n.webp?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjc2NXg5NTYuc2RyLmYyOTM1MC5kZWZhdWx0X2ltYWdlLmMyIn0&_nc_ht=scontent-gru2-1.cdninstagram.com&_nc_cat=111&_nc_oc=Q6cZ2QGXNW2KvGDivdS4a2AFHeGk5ifR9-aa1MRVXeRPwEB8pqo-sEmIizuJho5crtcl2UA&_nc_ohc=sTkKQL1YAa8Q7kNvwG9aYK8&_nc_gid=Hz4A7tUZsiiUkSYFrNC8KQ&edm=APoiHPcBAAAA&ccb=7-5&ig_cache_key=MzIyNTgxMTU3MjUwNzg1MDcwNQ%3D%3D.3-ccb7-5&oh=00_Afom6LLdeKUbs9P-EBgL74k0NO5ESHPiLHLBTivUJ9MbeQ&oe=69815FB8&_nc_sid=22de04" 
-                            alt="[Provas Sociais de Artes Realizadas]" 
-                            class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
-                            onerror="this.src='https://via.placeholder.com/800x600/1e1b4b/ffffff?text=Artes+Arena+do+Tim%C3%A3o'"
+                            alt="Projetos Arena do Timão" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            onerror="handleImageError(this)"
                         >
-                        <div class="absolute inset-0 bg-indigo-900/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                        <!-- Overlay de loading/ajuda -->
+                        <div id="image-hint" class="absolute inset-0 bg-gray-900 flex items-center justify-center p-6 text-center hidden">
+                            <p class="text-sm text-gray-400">
+                                <span class="block font-bold text-white mb-2">Imagem não carregada</span>
+                                O link do Instagram expirou. Por favor, utilize um serviço como Imgur ou GitHub para hospedar as fotos permanentemente.
+                            </p>
+                        </div>
                     </div>
                     <div class="p-6">
                         <h4 class="text-xl font-bold mb-2">Arena do Timão</h4>
-                        <p class="text-gray-400 text-sm mb-4">Gestão de identidade visual para o perfil @arenadotimão, incluindo:</p>
+                        <p class="text-gray-400 text-sm mb-4">Identidade visual e merchandising:</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-badge text-xs">Placas em Acrílico</span>
-                            <span class="skill-badge text-xs">Camisetas Personalizadas</span>
-                            <span class="skill-badge text-xs">Social Media</span>
+                            <span class="skill-badge text-xs">Camisetas</span>
+                            <span class="skill-badge text-xs">@arenadotimão</span>
                         </div>
                     </div>
                 </div>
@@ -248,20 +256,20 @@
                 <div class="glass-card p-8 flex flex-col justify-center reveal">
                     <h3 class="text-2xl font-bold mb-4 text-indigo-400">Do Digital ao Físico</h3>
                     <p class="text-gray-400 mb-6">
-                        Meu trabalho vai além do monitor. Tenho experiência em preparar arquivos para **corte em acrílico**, **sublimação e silk em camisas**, garantindo que a cor e a proporção vista na tela sejam exatamente o que o cliente recebe em mãos.
+                        Minha experiência técnica permite transitar entre o design de tela e a produção material. Trabalho com o fechamento rigoroso de arquivos para processos específicos.
                     </p>
                     <ul class="space-y-3">
                         <li class="flex items-center gap-3 text-sm text-gray-300">
                             <svg class="text-indigo-500" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Fechamento de arquivo para gráficas
+                            Corte a laser em Acrílico
                         </li>
                         <li class="flex items-center gap-3 text-sm text-gray-300">
                             <svg class="text-indigo-500" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Mockups realistas para aprovação
+                            Sublimação e Silk em vestuário
                         </li>
                         <li class="flex items-center gap-3 text-sm text-gray-300">
                             <svg class="text-indigo-500" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Acompanhamento de produção física
+                            Gestão visual de perfis esportivos
                         </li>
                     </ul>
                 </div>
@@ -269,7 +277,7 @@
         </div>
     </section>
 
-    <!-- 4. Competências -->
+    <!-- Competências -->
     <section id="competencias" class="py-24 px-6 bg-white/5">
         <div class="max-w-5xl mx-auto text-center">
             <h2 class="text-3xl font-bold mb-12 reveal">Competências Técnica</h2>
@@ -284,21 +292,21 @@
         </div>
     </section>
 
-    <!-- 6. Contato -->
+    <!-- Contato -->
     <footer id="contato" class="py-24 px-6">
         <div class="max-w-5xl mx-auto">
             <div class="grid md:grid-cols-3 gap-8 reveal">
-                <a href="https://wa.me/5511962652362" target="_blank" class="glass-card p-8 text-center block group">
+                <a href="https://wa.me/5511962652362" target="_blank" class="glass-card p-8 text-center block group hover:border-indigo-500/50">
                     <h4 class="font-bold text-lg mb-1">WhatsApp</h4>
-                    <p class="text-gray-400">11 96265-2362</p>
+                    <p class="text-gray-400 font-medium">11 96265-2362</p>
                 </a>
-                <a href="mailto:joeyfellipe07@gmail.com" class="glass-card p-8 text-center block group">
+                <a href="mailto:joeyfellipe07@gmail.com" class="glass-card p-8 text-center block group hover:border-indigo-500/50">
                     <h4 class="font-bold text-lg mb-1">E-mail</h4>
-                    <p class="text-gray-400 truncate">joeyfellipe07@gmail.com</p>
+                    <p class="text-gray-400 font-medium truncate">joeyfellipe07@gmail.com</p>
                 </a>
-                <a href="https://linkedin.com/in/joeyfellipe" target="_blank" class="glass-card p-8 text-center block group">
+                <a href="https://linkedin.com/in/joeyfellipe" target="_blank" class="glass-card p-8 text-center block group hover:border-indigo-500/50">
                     <h4 class="font-bold text-lg mb-1">LinkedIn</h4>
-                    <p class="text-gray-400">/joeyfellipe</p>
+                    <p class="text-gray-400 font-medium">/joeyfellipe</p>
                 </a>
             </div>
             <div class="mt-20 pt-8 border-t border-white/5 text-center text-gray-500 text-sm reveal">
@@ -309,6 +317,7 @@
     </footer>
 
     <script>
+        // Lógica de Reveal no Scroll
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -322,6 +331,7 @@
         window.addEventListener("scroll", reveal);
         window.onload = reveal;
 
+        // Efeito Parallax suave nos fundos
         document.addEventListener('mousemove', (e) => {
             const x = (e.clientX / window.innerWidth) - 0.5;
             const y = (e.clientY / window.innerHeight) - 0.5;
@@ -331,6 +341,12 @@
                 blob.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
             });
         });
+
+        // Tratamento de erro para links expirados do Instagram
+        function handleImageError(img) {
+            img.style.display = 'none';
+            document.getElementById('image-hint').classList.remove('hidden');
+        }
     </script>
 </body>
 </html>
