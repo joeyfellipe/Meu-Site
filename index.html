@@ -16,7 +16,7 @@
             overflow-x: hidden;
         }
 
-        /* Fundo Dinâmico */
+        /* Fundo Dinâmico com Blobs */
         .bg-gradient-radial {
             background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, #050505 70%);
             position: fixed;
@@ -44,7 +44,7 @@
             to { transform: translate(30%, 40%) scale(1.1); }
         }
 
-        /* Glassmorphism */
+        /* Glassmorphism Premium */
         .glass-card {
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(20px);
@@ -60,6 +60,58 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        /* Botão Hero com Glow Animado */
+        .btn-glow {
+            position: relative;
+            background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-glow:hover::before {
+            left: 100%;
+        }
+
+        .btn-glow:hover {
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Contact Cards Estilizados */
+        .contact-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .contact-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(79, 70, 229, 0.4);
+            transform: translateY(-8px);
+        }
+
+        .contact-card .icon-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover .icon-box {
+            background: #4f46e5;
+            border-color: #6366f1;
+            color: white;
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
+        }
+
         /* Reveal no Scroll */
         .reveal {
             opacity: 0;
@@ -72,7 +124,7 @@
             transform: translateY(0);
         }
 
-        /* Bento Item General */
+        /* Bento Grid */
         .bento-item {
             position: relative;
             overflow: hidden;
@@ -137,9 +189,9 @@
                 <a href="#home" class="hover:text-white transition-colors">Início</a>
                 <a href="#sobre" class="hover:text-white transition-colors">Sobre</a>
                 <a href="#portfolio" class="hover:text-white transition-colors">Portfólio</a>
-                <a href="#contato" class="hover:text-white transition-colors">Contato</a>
+                <a href="#contato" class="hover:text-white transition-colors">Contacto</a>
             </div>
-            <a href="https://wa.me/5511962652362" target="_blank" class="border border-white/20 px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all">WhatsApp</a>
+            <a href="https://wa.me/5511962652362" target="_blank" class="btn-glow bg-indigo-600 text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all">WhatsApp</a>
         </div>
     </nav>
 
@@ -147,54 +199,101 @@
     <section id="home" class="min-h-screen flex items-center justify-center px-8 pt-24">
         <div class="max-w-6xl w-full text-center">
             <div class="reveal mb-8">
-                <span class="text-indigo-400 text-xs font-bold uppercase tracking-[0.4em]">Designer Gráfico | E-commerce</span>
+                <span class="text-indigo-400 text-xs font-bold uppercase tracking-[0.4em]">Designer Gráfico | E-commerce | ADS</span>
             </div>
-            <h1 class="text-5xl md:text-8xl font-black mb-8 tracking-tighter reveal leading-tight">
+            <h1 class="text-5xl md:text-8xl font-black mb-8 tracking-tighter reveal leading-tight uppercase">
                 JOEY FELLIPE <br>KARTOWIDJOJO
             </h1>
             <p class="text-lg md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto reveal leading-relaxed font-light">
-                Criando conexões visuais entre o mundo físico e digital através de design estratégico e tecnologia aplicada.
+                Conectando design estratégico e tecnologia para criar soluções visuais de alto impacto no mundo físico e digital.
             </p>
             <div class="flex justify-center gap-8 reveal">
-                <a href="#portfolio" class="bg-indigo-600 text-white px-10 py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-indigo-500 transition-all">Ver Trabalhos</a>
+                <a href="#portfolio" class="btn-glow bg-indigo-600 text-white px-10 py-4 rounded-full font-bold text-xs uppercase tracking-widest">Ver Trabalhos</a>
             </div>
         </div>
     </section>
 
-    <!-- 2. Sobre Mim -->
+    <!-- 2. Sobre Mim / Experiência -->
     <section id="sobre" class="py-32 px-8">
-        <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-start">
             <div class="reveal">
-                <h2 class="text-4xl font-bold mb-10 leading-tight italic">Design com <span class="text-indigo-500">propósito.</span></h2>
+                <h2 class="text-4xl font-bold mb-10 leading-tight italic">Design com <span class="text-indigo-500 text-5xl">propósito.</span></h2>
                 <div class="space-y-6 text-gray-400 text-lg leading-relaxed font-light">
                     <p>
-                        Minha atuação na Comunicação Visual ensinou-me a lidar com a realidade tangível: o toque do acrílico, a fidelidade da cor na camisa e a precisão do corte.
+                        Minha trajetória na Comunicação Visual ensinou-me a lidar com a realidade tangível: do corte preciso em acrílico à fidelidade das cores em materiais têxteis.
                     </p>
                     <p>
-                        Hoje, levo esse rigor para o mundo do E-commerce e Tecnologia (ADS), onde cada elemento visual é planejado para converter, engajar e facilitar a jornada do usuário.
+                        Atualmente, integro esse rigor técnico ao universo do E-commerce e Tecnologia. Através do curso de Análise e Desenvolvimento de Sistemas (IFSP), planejo elementos visuais orientados a dados, conversão e experiência do utilizador.
                     </p>
                 </div>
+                
+                <!-- Idiomas -->
+                <div class="mt-12">
+                    <h4 class="text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] mb-6">Idiomas</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                        <div class="glass-card p-5 border-white/5">
+                            <span class="block text-[10px] text-gray-500 uppercase tracking-widest mb-2">Português</span>
+                            <span class="font-bold text-sm">Nativo</span>
+                        </div>
+                        <div class="glass-card p-5 border-indigo-500/20">
+                            <span class="block text-[10px] text-indigo-400 font-bold uppercase tracking-widest mb-2">Holandês</span>
+                            <span class="font-bold text-sm">Nativo</span>
+                        </div>
+                        <div class="glass-card p-5 border-white/5">
+                            <span class="block text-[10px] text-gray-500 uppercase tracking-widest mb-2">Inglês</span>
+                            <span class="font-bold text-sm">Avançado</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="reveal">
-                <div class="glass-card p-10 border-indigo-500/10">
+
+            <div class="reveal space-y-6">
+                <!-- Águia Dourada -->
+                <div class="glass-card p-8 border-indigo-500/10 hover:border-indigo-500/30">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Águia Dourada Modas</h3>
+                            <p class="text-indigo-400 text-[10px] font-black uppercase tracking-widest">2024 • Barueri, SP</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Foco em E-commerce e Design Gráfico. Atuação na criação e organização visual de produtos, padronização de anúncios para grandes marketplaces como Shopee, Mercado Livre e Magalu, além de tratamento de imagens focado em conversão de vendas.
+                    </p>
+                </div>
+
+                <!-- NK Sign -->
+                <div class="glass-card p-8 border-indigo-500/10 hover:border-indigo-500/30">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Gráfica NK Sign</h3>
+                            <p class="text-indigo-400 text-[10px] font-black uppercase tracking-widest">Até 2023 • Pará</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Responsável pelo fluxo completo de produção: desde o atendimento direto ao cliente e concepção da arte até a vetorização e fechamento técnico de arquivos para impressão em grandes formatos, adesivos e cortes especiais em acrílico.
+                    </p>
+                </div>
+
+                <!-- Skills -->
+                <div class="glass-card p-8 border-indigo-500/10">
                     <h4 class="text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] mb-6">Core Skills</h4>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="text-sm font-medium border-b border-white/10 pb-2">Photoshop CC</div>
-                        <div class="text-sm font-medium border-b border-white/10 pb-2">CorelDRAW</div>
-                        <div class="text-sm font-medium border-b border-white/10 pb-2">E-commerce ADS</div>
-                        <div class="text-sm font-medium border-b border-white/10 pb-2">Software Dev</div>
+                    <div class="grid grid-cols-2 gap-y-3">
+                        <div class="text-xs font-medium border-b border-white/5 pb-2">Photoshop CC</div>
+                        <div class="text-xs font-medium border-b border-white/5 pb-2">CorelDRAW</div>
+                        <div class="text-xs font-medium border-b border-white/5 pb-2">E-commerce ADS</div>
+                        <div class="text-xs font-medium border-b border-white/5 pb-2">Software Dev</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. Portfólio: NK SIGN (Físico) -->
+    <!-- 3. Portfólio: NK SIGN -->
     <section id="portfolio" class="py-32 px-8 bg-white/[0.01]">
         <div class="max-w-7xl mx-auto">
             <div class="reveal mb-16">
-                <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-4">PRODUÇÃO FÍSICA</h2>
-                <p class="text-gray-500 text-xl font-light italic">NK Sign • 2023</p>
+                <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-4 uppercase">Produção Física</h2>
+                <p class="text-gray-500 text-xl font-light italic">Projetos desenvolvidos na Gráfica NK Sign</p>
             </div>
 
             <div class="grid grid-cols-12 gap-4 reveal">
@@ -220,34 +319,21 @@
         </div>
     </section>
 
-    <!-- 4. Portfólio: ARENA DO TIMÃO (Quadrado / Posts) -->
+    <!-- 4. Portfólio: ARENA DO TIMÃO -->
     <section class="py-32 px-8">
         <div class="max-w-7xl mx-auto">
             <div class="reveal mb-16 text-right">
                 <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-4 uppercase">Arena do Timão</h2>
-                <p class="text-gray-500 text-xl font-light italic">Comunicação Digital • Até 2023</p>
+                <p class="text-gray-500 text-xl font-light italic">Comunicação Digital • Ciclo 2023</p>
             </div>
 
-            <!-- Grid de Posts Quadrados -->
             <div class="grid grid-cols-2 md:grid-cols-3 gap-6 reveal max-w-5xl mx-auto">
-                <div class="bento-item aspect-square group" onclick="zoomImage(this.querySelector('img').src)">
-                    <img src="https://i.imgur.com/cjQjeRN.png" alt="[Post Arena]">
-                </div>
-                <div class="bento-item aspect-square group" onclick="zoomImage(this.querySelector('img').src)">
-                    <img src="https://i.imgur.com/vTIHEqx.png" alt="[Post Arena]">
-                </div>
-                <div class="bento-item aspect-square group" onclick="zoomImage(this.querySelector('img').src)">
-                    <img src="https://i.imgur.com/zVpD1kU.png" alt="[Post Arena]">
-                </div>
-                <div class="bento-item aspect-square group" onclick="zoomImage(this.querySelector('img').src)">
-                    <img src="https://i.imgur.com/q24So0I.png" alt="[Post Arena]">
-                </div>
-                <div class="bento-item aspect-square group" onclick="zoomImage(this.querySelector('img').src)">
-                    <img src="https://i.imgur.com/Hc3Du5v.png" alt="[Post Arena]">
-                </div>
-                <div class="bento-item aspect-square group" onclick="zoomImage(this.querySelector('img').src)">
-                    <img src="https://i.imgur.com/omV7sUU.png" alt="[Post Arena]">
-                </div>
+                <div class="bento-item aspect-square" onclick="zoomImage(this.querySelector('img').src)"><img src="https://i.imgur.com/cjQjeRN.png" alt="[Post Arena]"></div>
+                <div class="bento-item aspect-square" onclick="zoomImage(this.querySelector('img').src)"><img src="https://i.imgur.com/vTIHEqx.png" alt="[Post Arena]"></div>
+                <div class="bento-item aspect-square" onclick="zoomImage(this.querySelector('img').src)"><img src="https://i.imgur.com/zVpD1kU.png" alt="[Post Arena]"></div>
+                <div class="bento-item aspect-square" onclick="zoomImage(this.querySelector('img').src)"><img src="https://i.imgur.com/q24So0I.png" alt="[Post Arena]"></div>
+                <div class="bento-item aspect-square" onclick="zoomImage(this.querySelector('img').src)"><img src="https://i.imgur.com/Hc3Du5v.png" alt="[Post Arena]"></div>
+                <div class="bento-item aspect-square" onclick="zoomImage(this.querySelector('img').src)"><img src="https://i.imgur.com/omV7sUU.png" alt="[Post Arena]"></div>
             </div>
             
             <div class="mt-16 reveal max-w-2xl">
@@ -259,28 +345,49 @@
         </div>
     </section>
 
-    <!-- Footer / Contato -->
-    <footer id="contato" class="py-32 px-8 text-center border-t border-white/5">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-6xl font-black mb-16 tracking-tighter uppercase">VAMOS CRIAR?</h2>
+    <!-- 5. Contact Section -->
+    <footer id="contato" class="py-40 px-8 border-t border-white/5">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-4xl md:text-7xl font-black mb-8 tracking-tighter uppercase leading-none">VAMOS <span class="text-indigo-500">CONECTAR?</span></h2>
+                <p class="text-gray-400 text-lg max-w-xl mx-auto font-light">Disponível para novos projetos de design, e-commerce e parcerias em tecnologia.</p>
+            </div>
             
-            <div class="flex flex-wrap justify-center gap-12 reveal">
-                <a href="https://wa.me/5511962652362" target="_blank" class="group">
-                    <span class="text-gray-500 block text-[10px] uppercase tracking-widest mb-2">WhatsApp</span>
-                    <span class="text-xl font-bold">11 96265-2362</span>
+            <!-- Botões de Contacto Estilizados -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/5511962652362" target="_blank" class="contact-card p-10 flex flex-col items-center text-center rounded-[2.5rem]">
+                    <div class="icon-box w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <span class="text-[10px] uppercase font-black tracking-[0.3em] text-gray-500 mb-2">Mensagem Direta</span>
+                    <h4 class="text-xl font-bold">WhatsApp</h4>
+                    <p class="text-gray-400 mt-4 text-sm font-medium">11 96265-2362</p>
                 </a>
-                <a href="mailto:joeyfellipe07@gmail.com" class="group">
-                    <span class="text-gray-500 block text-[10px] uppercase tracking-widest mb-2">Email</span>
-                    <span class="text-xl font-bold">joeyfellipe07@gmail.com</span>
+
+                <!-- Email -->
+                <a href="mailto:joeyfellipe07@gmail.com" class="contact-card p-10 flex flex-col items-center text-center rounded-[2.5rem]">
+                    <div class="icon-box w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </div>
+                    <span class="text-[10px] uppercase font-black tracking-[0.3em] text-gray-500 mb-2">Profissional</span>
+                    <h4 class="text-xl font-bold">E-mail</h4>
+                    <p class="text-gray-400 mt-4 text-sm font-medium truncate w-full px-2">joeyfellipe07@gmail.com</p>
                 </a>
-                <a href="https://linkedin.com/in/joeyfellipe" target="_blank" class="group">
-                    <span class="text-gray-500 block text-[10px] uppercase tracking-widest mb-2">LinkedIn</span>
-                    <span class="text-xl font-bold">/joeyfellipe</span>
+
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com/in/joeyfellipe" target="_blank" class="contact-card p-10 flex flex-col items-center text-center rounded-[2.5rem]">
+                    <div class="icon-box w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                    </div>
+                    <span class="text-[10px] uppercase font-black tracking-[0.3em] text-gray-500 mb-2">Conexões</span>
+                    <h4 class="text-xl font-bold">LinkedIn</h4>
+                    <p class="text-gray-400 mt-4 text-sm font-medium">/in/joeyfellipe</p>
                 </a>
             </div>
 
-            <div class="mt-32 text-gray-700 text-[10px] font-black uppercase tracking-[0.5em]">
-                Joey Fellipe Kartowidjojo • Capivari/SP • ©2024
+            <div class="mt-40 text-center">
+                <div class="text-gray-700 text-[10px] font-black uppercase tracking-[0.6em]">Joey Fellipe Kartowidjojo • Capivari/SP • ©2024</div>
             </div>
         </div>
     </footer>
@@ -301,6 +408,16 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+        // Background Motion (Blobs)
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) - 0.5;
+            const y = (e.clientY / window.innerHeight) - 0.5;
+            document.querySelectorAll('.blob').forEach((blob, i) => {
+                const speed = (i + 1) * 35;
+                blob.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+
         // Zoom Modal
         function zoomImage(src) {
             const modal = document.getElementById('zoom-modal');
@@ -315,22 +432,24 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Tilt Effect
-        const cards = document.querySelectorAll('.bento-item, .glass-card');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', e => {
+        // Tilt Effect Avançado para Contact Cards
+        const tilts = document.querySelectorAll('.contact-card, .bento-item, .glass-card');
+        tilts.forEach(el => {
+            el.addEventListener('mousemove', e => {
                 if (window.innerWidth < 1024) return;
-                const rect = card.getBoundingClientRect();
+                const rect = el.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
                 const xc = rect.width / 2;
                 const yc = rect.height / 2;
                 const dx = x - xc;
                 const dy = y - yc;
-                card.style.transform = `perspective(1000px) rotateX(${-dy/40}deg) rotateY(${dx/40}deg) translateY(-5px)`;
+                el.style.transform = `perspective(1000px) rotateX(${-dy/30}deg) rotateY(${dx/30}deg) translateY(-8px)`;
             });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)`;
+            el.style.transition = 'transform 0.1s ease-out';
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)`;
+                el.style.transition = 'transform 0.5s ease-out';
             });
         });
     </script>
