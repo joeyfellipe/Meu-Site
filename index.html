@@ -105,6 +105,32 @@
             transform: scale(1.05);
             box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
         }
+
+        /* Modal Zoom */
+        #zoom-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            cursor: zoom-out;
+        }
+
+        #zoom-modal.active {
+            display: flex;
+        }
+
+        #zoom-modal img {
+            max-width: 95%;
+            max-height: 90vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            cursor: default;
+        }
     </style>
 </head>
 <body>
@@ -113,7 +139,7 @@
     <div class="blob" style="top: 10%; left: 10%;"></div>
     <div class="blob" style="bottom: 10%; right: 10%; animation-delay: -5s; background: #312e81;"></div>
 
-    <!-- Navigation -->
+    <!-- Navegação -->
     <nav class="fixed top-0 w-full z-50 glass-nav">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <span class="font-bold tracking-tight text-xl">Joey<span class="text-indigo-400">.</span></span>
@@ -215,61 +241,63 @@
 
     <!-- SEÇÃO: Portfólio Visual / Prova Social -->
     <section id="portfolio" class="py-24 px-6">
-        <div class="max-w-5xl mx-auto">
+        <div class="max-w-6xl mx-auto">
             <div class="text-center mb-12 reveal">
-                <h2 class="text-3xl font-bold mb-4">Provas Sociais & Projetos</h2>
-                <p class="text-gray-400">Resultados reais aplicados a produtos, vestuário e gestão de redes sociais.</p>
+                <h2 class="text-3xl font-bold mb-4">Portfólio & Prova Social</h2>
+                <p class="text-gray-400">Casos reais e aplicações de design focado em resultados.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 items-stretch">
-                <!-- Card do Projeto Arena do Timão -->
-                <div class="glass-card overflow-hidden flex flex-col reveal">
-                    <div class="relative group aspect-video">
-                        <!-- Imagem do Projeto -->
-                        <img 
-                            id="project-image"
-                            src="https://scontent-gru2-1.cdninstagram.com/v/t51.29350-15/397536010_725015515703195_3333691723239060221_n.webp?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjc2NXg5NTYuc2RyLmYyOTM1MC5kZWZhdWx0X2ltYWdlLmMyIn0&_nc_ht=scontent-gru2-1.cdninstagram.com&_nc_cat=111&_nc_oc=Q6cZ2QGXNW2KvGDivdS4a2AFHeGk5ifR9-aa1MRVXeRPwEB8pqo-sEmIizuJho5crtcl2UA&_nc_ohc=sTkKQL1YAa8Q7kNvwG9aYK8&_nc_gid=Hz4A7tUZsiiUkSYFrNC8KQ&edm=APoiHPcBAAAA&ccb=7-5&ig_cache_key=MzIyNTgxMTU3MjUwNzg1MDcwNQ%3D%3D.3-ccb7-5&oh=00_Afom6LLdeKUbs9P-EBgL74k0NO5ESHPiLHLBTivUJ9MbeQ&oe=69815FB8&_nc_sid=22de04" 
-                            alt="Projetos Arena do Timão" 
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            onerror="handleImageError(this)"
-                        >
-                        <!-- Overlay de loading/ajuda -->
-                        <div id="image-hint" class="absolute inset-0 bg-gray-900 flex items-center justify-center p-6 text-center hidden">
-                            <p class="text-sm text-gray-400">
-                                <span class="block font-bold text-white mb-2">Imagem não carregada</span>
-                                O link do Instagram expirou. Por favor, utilize um serviço como Imgur ou GitHub para hospedar as fotos permanentemente.
-                            </p>
+            <!-- Projeto Arena do Timão -->
+            <div class="glass-card p-8 mb-12 reveal">
+                <div class="flex flex-col md:flex-row gap-8 items-center mb-8">
+                    <div class="md:w-1/2">
+                        <h3 class="text-2xl font-bold mb-4 text-white">Arena do Timão</h3>
+                        <p class="text-gray-400 mb-6 text-lg leading-relaxed">
+                            Gestão de identidade visual e criação de conteúdos para o perfil <strong>@arenadotimão</strong>. Projeto 100% digital focado em comunicação de notícias, resultados e cobertura de eventos esportivos com alta taxa de engajamento.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="skill-badge text-xs">Design Digital</span>
+                            <span class="skill-badge text-xs">Social Media</span>
+                            <span class="skill-badge text-xs">Futebol & Notícias</span>
+                            <span class="skill-badge text-xs">Engajamento</span>
                         </div>
+                        <p class="text-xs text-indigo-400/60 flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                            Clique nas imagens para ampliar
+                        </p>
                     </div>
-                    <div class="p-6">
-                        <h4 class="text-xl font-bold mb-2">Arena do Timão</h4>
-                        <p class="text-gray-400 text-sm mb-4">Identidade visual e merchandising:</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="skill-badge text-xs">Placas em Acrílico</span>
-                            <span class="skill-badge text-xs">Camisetas</span>
-                            <span class="skill-badge text-xs">@arenadotimão</span>
-                        </div>
+                    <div class="md:w-1/2 grid grid-cols-3 gap-2">
+                        <img src="https://i.imgur.com/cjQjeRN.png" alt="[Post Arena do Timão]" class="rounded-lg w-full aspect-square object-cover hover:scale-105 transition-transform cursor-zoom-in" onclick="zoomImage(this.src)">
+                        <img src="https://i.imgur.com/vTIHEqx.png" alt="[Post Arena do Timão]" class="rounded-lg w-full aspect-square object-cover hover:scale-105 transition-transform cursor-zoom-in" onclick="zoomImage(this.src)">
+                        <img src="https://i.imgur.com/zVpD1kU.png" alt="[Post Arena do Timão]" class="rounded-lg w-full aspect-square object-cover hover:scale-105 transition-transform cursor-zoom-in" onclick="zoomImage(this.src)">
+                        <img src="https://i.imgur.com/q24So0I.png" alt="[Post Arena do Timão]" class="rounded-lg w-full aspect-square object-cover hover:scale-105 transition-transform cursor-zoom-in" onclick="zoomImage(this.src)">
+                        <img src="https://i.imgur.com/Hc3Du5v.png" alt="[Post Arena do Timão]" class="rounded-lg w-full aspect-square object-cover hover:scale-105 transition-transform cursor-zoom-in" onclick="zoomImage(this.src)">
+                        <img src="https://i.imgur.com/omV7sUU.png" alt="[Post Arena do Timão]" class="rounded-lg w-full aspect-square object-cover hover:scale-105 transition-transform cursor-zoom-in" onclick="zoomImage(this.src)">
                     </div>
                 </div>
+            </div>
 
-                <!-- Card de Texto Explicativo -->
-                <div class="glass-card p-8 flex flex-col justify-center reveal">
+            <!-- Diferencial Técnico -->
+            <div class="grid md:grid-cols-2 gap-8 reveal">
+                <div class="glass-card p-8 flex flex-col justify-center">
                     <h3 class="text-2xl font-bold mb-4 text-indigo-400">Do Digital ao Físico</h3>
-                    <p class="text-gray-400 mb-6">
-                        Minha experiência técnica permite transitar entre o design de tela e a produção material. Trabalho com o fechamento rigoroso de arquivos para processos específicos.
+                    <p class="text-gray-400">
+                        Minha experiência em ambientes de produção real (gráficas e importadoras) me permite transitar entre o design de tela e a produção material com precisão técnica.
                     </p>
-                    <ul class="space-y-3">
+                </div>
+                <div class="glass-card p-8">
+                    <ul class="space-y-4">
                         <li class="flex items-center gap-3 text-sm text-gray-300">
-                            <svg class="text-indigo-500" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Corte a laser em Acrílico
+                            <svg class="text-indigo-500 shrink-0" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Fechamento de arquivo para Acrílico e Impressão
                         </li>
                         <li class="flex items-center gap-3 text-sm text-gray-300">
-                            <svg class="text-indigo-500" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Sublimação e Silk em vestuário
+                            <svg class="text-indigo-500 shrink-0" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Processos de Sublimação e Silk em vestuário
                         </li>
                         <li class="flex items-center gap-3 text-sm text-gray-300">
-                            <svg class="text-indigo-500" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Gestão visual de perfis esportivos
+                            <svg class="text-indigo-500 shrink-0" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Otimização visual de anúncios para E-commerce
                         </li>
                     </ul>
                 </div>
@@ -316,6 +344,11 @@
         </div>
     </footer>
 
+    <!-- Modal para Zoom -->
+    <div id="zoom-modal" onclick="closeZoom()">
+        <img id="modal-img" src="" alt="Zoom Image">
+    </div>
+
     <script>
         // Lógica de Reveal no Scroll
         function reveal() {
@@ -342,10 +375,19 @@
             });
         });
 
-        // Tratamento de erro para links expirados do Instagram
-        function handleImageError(img) {
-            img.style.display = 'none';
-            document.getElementById('image-hint').classList.remove('hidden');
+        // Funções de Zoom
+        function zoomImage(src) {
+            const modal = document.getElementById('zoom-modal');
+            const modalImg = document.getElementById('modal-img');
+            modalImg.src = src;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Bloqueia scroll ao abrir
+        }
+
+        function closeZoom() {
+            const modal = document.getElementById('zoom-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restaura scroll ao fechar
         }
     </script>
 </body>
